@@ -2,7 +2,7 @@
     width: 100%;
     height: var(--header-height);
     background-color: var(--header-background);
-    box-shadow: 0 0 10px 5px var(--accent-color);
+    box-shadow: 0 0 6px 2px var(--accent-color);
     display: flex;
     align-items: flex-end;
 }
