@@ -3,8 +3,9 @@
     --accent-color: rgb(62, 227, 172);
     --header-height: 70px;
     --header-background: #444;
-    --light-gray: #DDD;
+    --light-gray: #BBB;
     --accent-light: rgb(54, 252, 239);
+    --margin-top: 10rem;
 }
 
 body,html {
@@ -12,6 +13,7 @@ body,html {
     padding: 0;
     color: var(--accent-color);
     font-family: 'Roboto Mono', monospace;
+    font-size: 1.1rem;
 }
 
 body {

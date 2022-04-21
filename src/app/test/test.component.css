@@ -1,9 +1,41 @@
 .wrapper{
-    display: flex;
-    justify-content: center;
-    align-content: center;
+    width: 65%;
+    margin: auto;
+    margin-top: var(--margin-top);
 }
 
-.testText{
-    margin: 10%;
+.test-content{
+    margin-top: .25rem;
+    color: var(--light-gray);
+    padding: 0 .5rem;
+}
+
+.test-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.test-header button {
+    background: none;
+    border: none;
+    color: var(--light-gray);
+    font-size: .8rem;
+    margin: 0 .25rem 0 .25rem;
+    padding: 0;
+    cursor: pointer;
+}
+
+.test-length-toggle {
+    color: var(--light-gray);
+    font-size: .8rem;
+}
+
+.test-header button.active {
+    color: var(--accent-color);
+}
+
+.test-header button:hover {
+    color: white;
 }
