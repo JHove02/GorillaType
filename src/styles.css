@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --background-color: #656565;
+    --accent-color: rgb(62, 227, 172);
+    --header-height: 70px;
+    --header-background: #444;
+    --light-gray: #DDD;
+    --accent-light: rgb(54, 252, 239);
+}
+
+body,html {
+    margin: 0;
+    padding: 0;
+    color: var(--accent-color);
+    font-family: 'Roboto Mono', monospace;
+}
+
+body {
+    background-color: var(--background-color);
+}
