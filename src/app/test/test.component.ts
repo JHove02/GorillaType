@@ -10,10 +10,16 @@ export class TestComponent implements OnInit {
 
   constructor(private testService: TestService) { }
 
-  promptLength: number = 10;
+  promptLength!: number;
   prompt: string = "";
 
   ngOnInit(): void {
+    this.promptLength = 10;
+    const buttons = document.querySelectorAll('.toggle-length-button');
+    buttons.forEach(button => {
+      button.classList.remove('active');
+    });
+    document.querySelector('.toggle-length-button')?.classList.add('active');
     this.getWords(this.promptLength);
   }
 
@@ -21,7 +27,7 @@ export class TestComponent implements OnInit {
     this.prompt = this.testService.givePrompt(promptLength);
   }
 
-  onClick(element: any) {
+  lengthChange(element: any) {
     const buttons = document.querySelectorAll('.toggle-length-button');
     buttons.forEach(button => {
       button.classList.remove('active');
