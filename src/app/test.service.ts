@@ -13,7 +13,9 @@ export class TestService {
     let answer: string = "";
     for(let i = 0; i < length; i++) {
       let index: number = Math.floor(Math.random() * 100) - 1;
-      answer += this.WORDS[index] + " ";
+      answer += this.WORDS[index];
+      if(i < length - 1)
+        answer += " ";
     }
     return answer;
   }

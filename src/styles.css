@@ -6,6 +6,7 @@
     --light-gray: #BBB;
     --accent-light: rgb(54, 252, 239);
     --margin-top: 10rem;
+    --incorrect-color: rgb(180, 85, 85);
 }
 
 body,html {
@@ -18,4 +19,17 @@ body,html {
 
 body {
     background-color: var(--background-color);
+}
+
+.character {
+    white-space: pre;
+}
+
+.correct {
+    color: var(--accent-color);
+}
+
+.incorrect {
+    color: var(--incorrect-color);
+    text-decoration: underline;
 }

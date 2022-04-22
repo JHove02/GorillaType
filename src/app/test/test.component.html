@@ -9,7 +9,6 @@
                         <button (click)="lengthChange($event.target)" class="toggle-length-button 50 active">50</button>
                 </div>
         </div>
-        <div class="test-content">
-                {{prompt}}
-        </div>
+        <div class="test-content"></div>
+        <input type="text" name="input" id="input" (input)="input(userInput.value)" #userInput>
 </div>
