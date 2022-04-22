@@ -21,6 +21,11 @@ body {
     background-color: var(--background-color);
 }
 
+/*
+    angular is being weird, I think it's because I'm adding a lot of elements to the HTML
+    through typescript and it won't let me style those in the respective stylesheets so
+    I just threw em in here for now and I'll ask the prof what's up later.
+*/
 .character {
     white-space: pre;
 }
