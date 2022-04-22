@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TestService } from '../test.service';
 
+
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -13,6 +14,7 @@ export class TestComponent implements OnInit {
   promptLength!: number;
   prompt: string = "";
   userInput: string = "hello";
+  time!: number;
 
   ngOnInit(): void {
     this.promptLength = 10;
@@ -23,6 +25,7 @@ export class TestComponent implements OnInit {
     document.querySelector('.toggle-length-button')?.classList.add('active');
     this.getWords(this.promptLength);
     this.addPrompt(this.prompt);
+    this.time = 30;
   }
 
   getWords(promptLength: number): void {
@@ -88,4 +91,24 @@ export class TestComponent implements OnInit {
       });
     }
   }
+
+
+  countdown(): void{
+      const interval = setInterval(() => {
+        this.time--;
+        if (this.time <= 0){
+          clearInterval(interval);
+        }
+      }, 1000);
+  }
+
+  started: boolean = false;
+  startCountdown():void{
+    if(this.started = false){
+      this.countdown();
+      this.started= true;
+    }
+  }
+
+
 }

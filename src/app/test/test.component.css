@@ -9,6 +9,8 @@
     margin-top: .25rem;
     color: var(--light-gray);
     padding: 0 .5rem;
+    overflow-wrap: break-word;
+    word-break: keep-all;
 }
 
 .test-header {
