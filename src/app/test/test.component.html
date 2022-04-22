@@ -1,7 +1,8 @@
 <div class="wrapper">
         <div class="test-header">
                 <div class="test-header-title">Type!</div>
-                <div class="test-header-timer">{{time}}</div>
+                <div class="test-header-timer">{{minutesDisplay}}:{{secondsDisplay}}
+                </div>
                 <div class="test-length-toggle">
                         Words:
                         <button (click)="lengthChange($event.target)" class="toggle-length-button 10">10</button>
@@ -10,5 +11,5 @@
                 </div>
         </div>
         <div class="test-content"></div>
-        <input type="text" name="input" id="input" (input)="input(userInput.value)" (click)="countdown()"  #userInput>
+        <input type="text" name="input" id="input" (input)="input(userInput.value)" #userInput>
 </div>

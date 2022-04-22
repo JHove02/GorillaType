@@ -14,7 +14,11 @@ export class TestComponent implements OnInit {
   promptLength!: number;
   prompt: string = "";
   userInput: string = "hello";
-  time!: number;
+  minutesDisplay: string = "00";
+  secondsDisplay: string = "00";
+  minutes!: number;
+  clock!: number;
+  firstInput: boolean = true;
 
   ngOnInit(): void {
     this.promptLength = 10;
@@ -25,7 +29,8 @@ export class TestComponent implements OnInit {
     document.querySelector('.toggle-length-button')?.classList.add('active');
     this.getWords(this.promptLength);
     this.addPrompt(this.prompt);
-    this.time = 30;
+    this.clock = 0;
+    this.minutes = 0;
   }
 
   getWords(promptLength: number): void {
@@ -68,11 +73,15 @@ export class TestComponent implements OnInit {
   }
 
   input(input: string): void {
+    if(this.firstInput){
+      this.firstInput = false;
+      this.startTimer();
+    }
     let currentIndex: number = input.length - 1;
     if (currentIndex > -1) {
       const prompt = document.querySelectorAll('.character');
-      prompt.forEach((element, index) =>{
-        if(index > currentIndex)
+      prompt.forEach((element, index) => {
+        if (index > currentIndex)
           element.classList.remove('incorrect', 'correct');
       });
       const currentChar = prompt[currentIndex];
@@ -92,23 +101,31 @@ export class TestComponent implements OnInit {
     }
   }
 
-
-  countdown(): void{
-      const interval = setInterval(() => {
-        this.time--;
-        if (this.time <= 0){
-          clearInterval(interval);
-        }
-      }, 1000);
-  }
-
-  started: boolean = false;
-  startCountdown():void{
-    if(this.started = false){
-      this.countdown();
-      this.started= true;
+  formatClock(): void {
+    if (this.clock < 10) {
+      this.secondsDisplay = "0" + this.clock;
     }
+    else {
+      this.secondsDisplay = this.clock.toString();
+    }
+    if (this.minutes < 10) {
+      this.minutesDisplay = "0" + this.minutes;
+    }
+    else {
+      this.minutesDisplay = this.minutes.toString();
+    }
+
   }
 
-
+  startTimer(): void {
+    const interval = setInterval(() => {
+      this.clock++;
+      console.log(this.clock);
+      if (this.clock == 60) {
+        this.clock = 0;
+        this.minutes += 1;
+      }
+      this.formatClock();
+    }, 1000);
+  }
 }
