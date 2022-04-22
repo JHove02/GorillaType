@@ -1,6 +1,7 @@
 .wrapper{
     width: 65%;
     margin: auto;
+    font-size: 1.5rem;
     margin-top: var(--margin-top);
 }
 
@@ -13,6 +14,7 @@
 .test-header {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     width: 100%;
     border-bottom: 1px solid var(--light-gray);
 }
@@ -38,4 +40,9 @@
 
 .test-header button:hover {
     color: white;
+}
+
+.test-header .test-header-title {
+    font-size: 2rem;
+    font-weight: bold;
 }

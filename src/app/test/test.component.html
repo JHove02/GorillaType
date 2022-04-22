@@ -4,15 +4,12 @@
                 <div class="test-header-timer">00:00</div>
                 <div class="test-length-toggle">
                         Words:
-                        <button class="10">10</button>
-                        <button class="25">25</button>
-                        <button class="50 active">50</button>
+                        <button (click)="onClick($event.target)" class="toggle-length-button 10">10</button>
+                        <button (click)="onClick($event.target)" class="toggle-length-button 25">25</button>
+                        <button (click)="onClick($event.target)" class="toggle-length-button 50 active">50</button>
                 </div>
         </div>
         <div class="test-content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat obcaecati tempora voluptate reiciendis
-                quibusdam ut ad laborum sit aliquid ipsa cumque velit est molestiae et earum maiores fuga similique
-                accusantium ratione eaque qui, sequi, commodi nam! Doloribus recusandae quis sunt, beatae dolor adipisci
-                excepturi mollitia consectetur nihil id explicabo quas.
+                {{prompt}}
         </div>
 </div>
