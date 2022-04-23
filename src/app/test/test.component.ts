@@ -129,6 +129,7 @@ export class TestComponent implements OnInit {
 
   stopTest(): void {
     this.clock = 0;
+    this.minutes = 0;
     this.minutesDisplay = this.secondsDisplay = '00';
     this.formatClock();
     this.getWords(this.promptLength);
