@@ -9,8 +9,19 @@
     margin-top: .25rem;
     color: var(--light-gray);
     padding: 0 .5rem;
-    overflow-wrap: break-word;
-    word-break: keep-all;
+    display: flex;
+    flex-wrap: wrap;
+    /*
+        for the wrapping stuff, we'll probably have to do some 
+        typescript where we use query selector and say if it's the 30th 
+        span element or more (on that line), then find the next element 
+        containing a space and add a <br> tag from that point
+    */
+}
+
+.test-header-timer {
+    color: var(--light-gray);
+    transition: 150ms ease-in-out;
 }
 
 .test-header {
@@ -46,5 +57,35 @@
 
 .test-header .test-header-title {
     font-size: 2rem;
-    font-weight: bold;
+    transition: 200ms ease-in-out;
+    font-weight: bold; 
+}
+
+.stop-test {
+    padding: .5em 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em auto;
+    border: none;
+    background-color: var(--light-gray);
+    border-radius: .25em;
+    transition: 125ms ease-in-out;
+}
+
+.stop-test svg {
+    border-radius: .1em;
+    width: 2em;
+    height: 2em;
+    fill: var(--background-color);
+}
+
+.stop-test:hover {
+    box-shadow: 0 .5em 5px 2px var(--header-background);
+    transform: translateY(-3px);
+}
+
+.stop-test:active {
+    background-color: #AAA;
+    transition: 50ms ease-in-out;
 }

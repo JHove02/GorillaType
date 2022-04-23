@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
 import { TestService } from '../test.service';
 
 
@@ -13,12 +14,14 @@ export class TestComponent implements OnInit {
 
   promptLength!: number;
   prompt: string = "";
-  userInput: string = "hello";
+  userInput: string = "";
   minutesDisplay: string = "00";
   secondsDisplay: string = "00";
   minutes!: number;
   clock!: number;
   firstInput: boolean = true;
+  interval: any;
+  in!: string;
 
   ngOnInit(): void {
     this.promptLength = 10;
@@ -53,12 +56,6 @@ export class TestComponent implements OnInit {
     this.addPrompt(this.prompt);
   }
 
-  /*=================================== SOME EXPLANATION OF APPROACH I GUESS ==============================================
-    taking user input: have the prompt be a char array. For every char, add an html element just containing that
-    char, could be a <span> or a <div> or whatever. Then, for every character typed, we can check what the user typed
-    at a specific index, and then get the nth html element containing a char (they can all have some kinda class like
-    character or something) in document query selector, add the 'correct' class or 'incorrect' class if they type it wrong
-  */
   addPrompt(prompt: string): void {
     const container = document.querySelector('.test-content');
     document.querySelectorAll('.character').forEach(element => {
@@ -73,7 +70,7 @@ export class TestComponent implements OnInit {
   }
 
   input(input: string): void {
-    if(this.firstInput){
+    if (this.firstInput) {
       this.firstInput = false;
       this.startTimer();
     }
@@ -118,14 +115,29 @@ export class TestComponent implements OnInit {
   }
 
   startTimer(): void {
-    const interval = setInterval(() => {
+    document.querySelector('.test-header-timer')?.setAttribute('style', 'color: var(--accent-color)');
+    document.querySelector('.test-header-title')?.setAttribute('style', 'color: var(--light-gray)');
+    this.interval = setInterval(() => {
       this.clock++;
-      console.log(this.clock);
       if (this.clock == 60) {
         this.clock = 0;
         this.minutes += 1;
       }
       this.formatClock();
     }, 1000);
+  }
+
+  stopTest(): void {
+    this.clock = 0;
+    this.minutesDisplay = this.secondsDisplay = '00';
+    this.formatClock();
+    this.getWords(this.promptLength);
+    this.addPrompt(this.prompt);
+    clearInterval(this.interval);
+    document.querySelector('.test-header-timer')?.setAttribute('style', 'color: var(--light-gray)');
+    document.querySelector('.test-header-title')?.setAttribute('style', 'color: var(--accent-color)');
+    this.in = "";
+    this.userInput = "";
+    this.firstInput = true;
   }
 }
