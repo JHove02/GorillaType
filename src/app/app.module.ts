@@ -8,7 +8,8 @@ import { AppRouterModule } from './app-router.module';
 import { TestResultsComponent } from './test-results/test-results.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AboutComponent } from './about/about.component';
-
+import {HttpClientModule} from '@angular/common/http';
+import { User } from './user';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { AboutComponent } from './about/about.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRouterModule
+    AppRouterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
