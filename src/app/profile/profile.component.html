@@ -1,3 +1,10 @@
-<p>profile works!</p>
 
-<p>does this actually work</p>
+<h2>Create a user</h2>
+
+<p>Username</p>
+<input type="text" [(ngModel)] = "newUsername">
+
+<p>Password</p>
+<input type="text" [(ngModel)] = "newPassword">
+<br>
+<button (click) = "addNewUser()">Create</button>
