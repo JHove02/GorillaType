@@ -12,8 +12,9 @@ const routes: Routes = [
   { path: 'test', component: TestComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'results', component: TestResultsComponent },
-  { path: '**', component: TestComponent },
-  { path: 'profile', component: ProfileComponent}
+  { path: 'profile', component: ProfileComponent},
+  { path: '**', component: TestComponent }
+  
 ];
 
 @NgModule({
