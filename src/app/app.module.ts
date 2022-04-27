@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { AppRouterModule } from './app-router.module';
 import { TestResultsComponent } from './test-results/test-results.component';
 import { SettingsComponent } from './settings/settings.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SettingsComponent } from './settings/settings.component';
     TestComponent,
     HeaderComponent,
     TestResultsComponent,
-    SettingsComponent
+    SettingsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
