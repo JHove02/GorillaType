@@ -7,7 +7,7 @@
 
 .test-content{
     margin-top: .25rem;
-    color: var(--light-gray);
+    color: var(--button);
     padding: 0 .5rem;
     display: flex;
     flex-wrap: wrap;
@@ -20,7 +20,7 @@
 }
 
 .test-header-timer {
-    color: var(--light-gray);
+    color: var(--button);
     transition: 150ms ease-in-out;
 }
 
@@ -29,13 +29,13 @@
     justify-content: space-between;
     align-items: flex-end;
     width: 100%;
-    border-bottom: 1px solid var(--light-gray);
+    border-bottom: 1px solid var(--button);
 }
 
 .test-header button {
     background: none;
     border: none;
-    color: var(--light-gray);
+    color: var(--button);
     font-size: .8rem;
     margin: 0 .25rem 0 .25rem;
     padding: 0;
@@ -43,7 +43,7 @@
 }
 
 .test-length-toggle {
-    color: var(--light-gray);
+    color: var(--button);
     font-size: .8rem;
 }
 
@@ -68,7 +68,7 @@
     justify-content: center;
     margin: 1em auto;
     border: none;
-    background-color: var(--light-gray);
+    background-color: var(--button);
     border-radius: .25em;
     transition: 125ms ease-in-out;
 }

@@ -20,7 +20,7 @@
     content: "";
     opacity: 0;
     width: 97%;
-    background-color: var(--light-gray);
+    background-color: var(--button);
     height: 2px;
     border-radius: 5px;
     position: absolute;
@@ -50,7 +50,7 @@
 }
 
 .nav button > svg {
-    fill: var(--light-gray);
+    fill: var(--button);
     width: 25px;
     height: 25px;
     transition: 150ms ease-in-out;
