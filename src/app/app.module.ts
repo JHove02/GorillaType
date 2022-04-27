@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRouterModule } from './app-router.module';
+import { TestResultsComponent } from './test-results/test-results.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
-    HeaderComponent
+    HeaderComponent,
+    TestResultsComponent
   ],
   imports: [
     BrowserModule,

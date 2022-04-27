@@ -1,4 +1,6 @@
+import { Container } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { interval } from 'rxjs';
 import { TestService } from '../test.service';
 
@@ -10,7 +12,10 @@ import { TestService } from '../test.service';
 })
 export class TestComponent implements OnInit {
 
-  constructor(private testService: TestService) { }
+  constructor(
+    private testService: TestService,
+    private route: Router,
+    ) { }
 
   promptLength!: number;
   prompt: string = "";
@@ -89,6 +94,9 @@ export class TestComponent implements OnInit {
       else {
         currentChar.classList.add('correct');
         currentChar.classList.remove('incorrect');
+        if (currentIndex == this.prompt.length) {
+          this.completeTest();
+        }
       }
     }
     else {
@@ -96,6 +104,15 @@ export class TestComponent implements OnInit {
         element.classList.remove('correct', 'incorrect');
       });
     }
+  }
+
+  completeTest(): void {
+    let incorrect: number = document.querySelectorAll('.incorrect').length;
+    let correct: number = document.querySelectorAll('.correct').length;
+    let time: string = this.minutesDisplay + ':' + this.secondsDisplay;
+    let finishedPrompt: Element = document.querySelector('.test-content')!;
+    this.testService.sendResults(incorrect, correct, time, finishedPrompt);
+    this.route.navigate(['/results'])
   }
 
   formatClock(): void {
