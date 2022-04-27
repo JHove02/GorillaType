@@ -10,7 +10,6 @@ const routes: Routes = [
   {path: 'test', component: TestComponent},
   {path: 'settings', component: SettingsComponent},
   {path: 'results', component: TestResultsComponent},
-  { path: '',   redirectTo: '/test', pathMatch: 'full' },
   {path: '**', component: TestComponent}
 ];
 
