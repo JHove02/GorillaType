@@ -6,11 +6,12 @@ import { TestResultsComponent } from './test-results/test-results.component';
 import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
-  { path: '',   redirectTo: '/test', pathMatch: 'full' },
-  {path: 'test', component: TestComponent},
-  {path: 'settings', component: SettingsComponent},
-  {path: 'results', component: TestResultsComponent},
-  {path: '**', component: TestComponent}
+  { path: '', redirectTo: '/test', pathMatch: 'full' },
+  { path: 'about', component: AboutComponent },
+  { path: 'test', component: TestComponent },
+  { path: 'settings', component: SettingsComponent },
+  { path: 'results', component: TestResultsComponent },
+  { path: '**', component: TestComponent }
 ];
 
 @NgModule({
@@ -18,6 +19,6 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
   ],
-  exports:[RouterModule]
+  exports: [RouterModule]
 })
 export class AppRouterModule { }

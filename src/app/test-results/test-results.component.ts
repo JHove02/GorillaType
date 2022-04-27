@@ -28,7 +28,4 @@ export class TestResultsComponent implements OnInit {
     this.finishedPrompt = this.testService.getFinishedPrompt();
     document.querySelector('.info')?.appendChild(this.finishedPrompt);
   }
-
-
-
 }
