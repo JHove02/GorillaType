@@ -8,6 +8,7 @@ import { AppRouterModule } from './app-router.module';
 import { TestResultsComponent } from './test-results/test-results.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AboutComponent } from './about/about.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AboutComponent } from './about/about.component';
     HeaderComponent,
     TestResultsComponent,
     SettingsComponent,
-    AboutComponent
+    AboutComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
