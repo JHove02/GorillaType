@@ -12,12 +12,6 @@
     padding: 0 .5rem;
     display: flex;
     flex-wrap: wrap;
-    /*
-        for the wrapping stuff, we'll probably have to do some 
-        typescript where we use query selector and say if it's the 30th 
-        span element or more (on that line), then find the next element 
-        containing a space and add a <br> tag from that point
-    */
 }
 
 .test-header-timer {
@@ -67,7 +61,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 1em auto;
+    margin: 5em auto 0 auto;
     border: none;
     background-color: var(--button);
     border-radius: .25em;
