@@ -65,13 +65,28 @@ export class TestComponent implements OnInit {
   addPrompt(prompt: string): void {
     const container = document.querySelector('.test-content');
     document.querySelectorAll('.character').forEach(element => {
-      container?.removeChild(element);
+      element.remove();
     });
+    console.log(prompt)
     for (let i = 0; i < prompt.length; i++) {
-      const element = document.createElement('span');
-      element.innerHTML = prompt.charAt(i);
-      element.classList.add('character');
-      container?.appendChild(element);
+      const word = document.createElement('div');
+      word.classList.add('word');
+      const space = document.createElement('span');
+      space.innerHTML = " ";
+      space.classList.add('character');
+      while (prompt.charAt(i) != ' ' && i < prompt.length) {
+        const element = document.createElement('span');
+        element.innerHTML = prompt.charAt(i);
+        element.classList.add('character');
+        if (i == 0) {
+          element.classList.add('current');
+        }
+        word.appendChild(element);
+        console.log(prompt.charAt(i));
+        i++;
+      }
+      container?.appendChild(word);
+      container?.appendChild(space);
     }
   }
 
@@ -85,10 +100,15 @@ export class TestComponent implements OnInit {
     if (this.currentIndex > -1 && this.currentIndex < this.prompt.length) {
       const prompt = document.querySelectorAll('.character');
       prompt.forEach((element, index) => {
+        element.classList.remove('current');
         if (index > this.currentIndex)
           element.classList.remove('incorrect', 'correct');
       });
       const currentChar = prompt[this.currentIndex];
+      let nextChar = currentChar;
+      if (this.currentIndex < this.prompt.length - 1)
+        nextChar = prompt[this.currentIndex + 1]
+      nextChar.classList.add('current');
       if (input.charAt(this.currentIndex) !== currentChar.innerHTML) {
         currentChar.classList.remove('correct');
         currentChar.classList.add('incorrect');
@@ -112,6 +132,7 @@ export class TestComponent implements OnInit {
     let incorrect: number = document.querySelectorAll('.incorrect').length;
     let correct: number = document.querySelectorAll('.correct').length;
     let time: string = this.minutesDisplay + ':' + this.secondsDisplay;
+    document.querySelectorAll('.character').forEach(element => element.classList.remove('current'));
     let finishedPrompt: Element = document.querySelector('.test-content')!;
     this.testService.sendResults(incorrect, correct, time, finishedPrompt);
     this.route.navigate(['/results'])
@@ -135,7 +156,7 @@ export class TestComponent implements OnInit {
 
   startTimer(): void {
     document.querySelector('.test-header-timer')?.setAttribute('style', 'color: var(--accent-color)');
-    document.querySelector('.test-header-title')?.setAttribute('style', 'color: var(--light-gray)');
+    document.querySelector('.test-header-title')?.setAttribute('style', 'color: var(--button)');
     this.interval = setInterval(() => {
       this.clock++;
       if (this.clock == 60) {
