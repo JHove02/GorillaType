@@ -8,8 +8,13 @@ import { AppRouterModule } from './app-router.module';
 import { TestResultsComponent } from './test-results/test-results.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AboutComponent } from './about/about.component';
+<<<<<<< HEAD
 import {HttpClientModule} from '@angular/common/http';
 import { User } from './user';
+=======
+import { ProfileComponent } from './profile/profile.component';
+
+>>>>>>> 0794a01c9721c05fd63da93a597e279fbf54bb3d
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +22,8 @@ import { User } from './user';
     HeaderComponent,
     TestResultsComponent,
     SettingsComponent,
-    AboutComponent
+    AboutComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
