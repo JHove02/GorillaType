@@ -58,4 +58,13 @@ export class SettingsComponent implements OnInit {
     document.documentElement.style.setProperty('--accent-light', '#000000');
   }
 
+  lightClick():void{
+    document.documentElement.style.setProperty('--button', '#000000');
+    document.documentElement.style.setProperty('--incorrect-color', 'rgb(180, 85, 85)');
+    document.documentElement.style.setProperty('--background-color', '#FFFFFF');
+    document.documentElement.style.setProperty('--accent-color', 'rgb(62, 227, 172');
+    document.documentElement.style.setProperty('--header-background', '#DDD');
+    document.documentElement.style.setProperty('--accent-light', '#000000');
+  }
+
 }
