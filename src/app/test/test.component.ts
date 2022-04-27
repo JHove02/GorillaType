@@ -15,7 +15,7 @@ export class TestComponent implements OnInit {
   constructor(
     private testService: TestService,
     private route: Router,
-    ) { }
+  ) { }
 
   promptLength!: number;
   prompt: string = "";
@@ -27,6 +27,7 @@ export class TestComponent implements OnInit {
   firstInput: boolean = true;
   interval: any;
   in!: string;
+  currentIndex: number = 0;
 
   ngOnInit(): void {
     this.promptLength = 10;
@@ -79,22 +80,23 @@ export class TestComponent implements OnInit {
       this.firstInput = false;
       this.startTimer();
     }
-    let currentIndex: number = input.length - 1;
-    if (currentIndex > -1) {
+    console.log(this.prompt)
+    this.currentIndex = input.length - 1;
+    if (this.currentIndex > -1 && this.currentIndex < this.prompt.length) {
       const prompt = document.querySelectorAll('.character');
       prompt.forEach((element, index) => {
-        if (index > currentIndex)
+        if (index > this.currentIndex)
           element.classList.remove('incorrect', 'correct');
       });
-      const currentChar = prompt[currentIndex];
-      if (input.charAt(currentIndex) !== currentChar.innerHTML) {
+      const currentChar = prompt[this.currentIndex];
+      if (input.charAt(this.currentIndex) !== currentChar.innerHTML) {
         currentChar.classList.remove('correct');
         currentChar.classList.add('incorrect');
       }
       else {
         currentChar.classList.add('correct');
         currentChar.classList.remove('incorrect');
-        if (currentIndex == this.prompt.length) {
+        if (this.currentIndex + 1 == this.prompt.length) {
           this.completeTest();
         }
       }
@@ -157,5 +159,12 @@ export class TestComponent implements OnInit {
     this.in = "";
     this.userInput = "";
     this.firstInput = true;
+  }
+
+  checkEnter(event: KeyboardEvent): void {
+    if (event.key === 'Enter' && this.currentIndex == this.prompt.length - 1) {
+      this.completeTest();
+      console.log('here')
+    }
   }
 }
