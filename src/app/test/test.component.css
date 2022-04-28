@@ -89,3 +89,17 @@
     position: absolute;
     opacity: 0;
 }
+
+.userInput:active .test-content {
+    background-color: red;
+}
+
+.test-content.hover {
+    border-radius: .25em;
+    background-color: rgba(var(--label-hover));
+    cursor: pointer;
+}
+
+.in-progress {
+    background-color: transparent;
+}

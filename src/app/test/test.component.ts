@@ -27,9 +27,11 @@ export class TestComponent implements OnInit {
   firstInput: boolean = true;
   interval: any;
   in!: string;
-  currentIndex: number = 0;
+  currentIndex: number = -1;
+  takingTest?: boolean;
 
   ngOnInit(): void {
+    this.takingTest = false;
     this.promptLength = 10;
     const buttons = document.querySelectorAll('.toggle-length-button');
     buttons.forEach(button => {
@@ -67,7 +69,6 @@ export class TestComponent implements OnInit {
     document.querySelectorAll('.character').forEach(element => {
       element.remove();
     });
-    console.log(prompt)
     for (let i = 0; i < prompt.length; i++) {
       const word = document.createElement('div');
       word.classList.add('word');
@@ -78,15 +79,11 @@ export class TestComponent implements OnInit {
         const element = document.createElement('span');
         element.innerHTML = prompt.charAt(i);
         element.classList.add('character');
-        if (i == 0) {
-          element.classList.add('current');
-        }
         word.appendChild(element);
-        console.log(prompt.charAt(i));
         i++;
       }
+      word.appendChild(space);
       container?.appendChild(word);
-      container?.appendChild(space);
     }
   }
 
@@ -95,7 +92,6 @@ export class TestComponent implements OnInit {
       this.firstInput = false;
       this.startTimer();
     }
-    console.log(this.prompt)
     this.currentIndex = input.length - 1;
     if (this.currentIndex > -1 && this.currentIndex < this.prompt.length) {
       const prompt = document.querySelectorAll('.character');
@@ -134,6 +130,7 @@ export class TestComponent implements OnInit {
     let time: string = this.minutesDisplay + ':' + this.secondsDisplay;
     document.querySelectorAll('.character').forEach(element => element.classList.remove('current'));
     let finishedPrompt: Element = document.querySelector('.test-content')!;
+    finishedPrompt.classList.remove('taking');
     this.testService.sendResults(incorrect, correct, time, finishedPrompt);
     this.route.navigate(['/results'])
   }
@@ -180,12 +177,27 @@ export class TestComponent implements OnInit {
     this.in = "";
     this.userInput = "";
     this.firstInput = true;
+    this.takingTest = false;
   }
 
   checkEnter(event: KeyboardEvent): void {
     if (event.key === 'Enter' && this.currentIndex == this.prompt.length - 1) {
       this.completeTest();
-      console.log('here')
     }
+  }
+
+  labelSelected(): void {
+    document.querySelector('.taking')?.classList.remove('hover')
+    document.querySelector('.character')?.classList.add('current');
+    this.takingTest = true;
+  }
+
+  labelHover(): void {
+    if(!this.takingTest)
+      document.querySelector('.taking')?.classList.add('hover');
+  }
+
+  cancelLabelHover(): void {
+    document.querySelector('.taking')?.classList.remove('hover');
   }
 }

@@ -7,6 +7,7 @@
     --accent-light: rgb(54, 252, 239);
     --margin-top: 10rem;
     --incorrect-color: rgb(180, 85, 85);
+    --label-hover: 240, 240, 240, .2;
 }
 
 body,html {
