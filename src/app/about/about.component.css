@@ -1,3 +1,19 @@
-h1{
-    text-align: center;
+.text-content {
+    margin: .25em 0 0 1rem;
+    color: var(--button);
+    font-size: 1.25rem;
+}
+
+.website-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.website-link:hover {
+    text-decoration: underline;
+}
+
+.heading {
+    border-bottom: 3px solid var(--accent-color);
 }

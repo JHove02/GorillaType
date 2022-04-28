@@ -172,7 +172,7 @@ export class TestComponent implements OnInit {
     this.getWords(this.promptLength);
     this.addPrompt(this.prompt);
     clearInterval(this.interval);
-    document.querySelector('.test-header-timer')?.setAttribute('style', 'color: var(--light-gray)');
+    document.querySelector('.test-header-timer')?.setAttribute('style', 'color: var(--button)');
     document.querySelector('.test-header-title')?.setAttribute('style', 'color: var(--accent-color)');
     this.in = "";
     this.userInput = "";

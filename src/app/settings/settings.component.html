@@ -1,23 +1,29 @@
-<h1>Settings</h1>
+<div class="wrapper">
 
-<div class="themes-container">
-    <h2 class="themes-header">Themes</h2>
-    <button class="default" (click)="defaultClick()">Default</button>
-    <button class="redBlackBtn" (click)="redBlackClick()">Red and black</button>
-    <button class="monkey" (click)="monkeyClick()">Monkey</button>
-    <button class="Orange" (click)="OrangeClick()">Blue Orange</button>
-    <button class="Blue" (click)="blueClick()">Blue</button>
-    <button class="Light" (click)="lightClick()">Light</button>
-</div>
+    <div class="heading">Settings</div>
+    <div class="themes-password-flex">
+        <div class="themes-container">
+            <h2 class="themes-header">Themes</h2>
+            <div class="button-themes">
+                <button class="default" (click)="defaultClick()">Default</button>
+                <button class="redBlackBtn" (click)="redBlackClick()">Red Dark</button>
+                <button class="monkey" (click)="monkeyClick()">MonkeyType</button>
+                <button class="Orange" (click)="OrangeClick()">Compliments</button>
+                <button class="Blue" (click)="blueClick()">Sea Sky</button>
+                <button class="Light" (click)="lightClick()">Default Light</button>
+            </div>
+        </div>
 
-<div class="cPass-container">
-    <h2 class="cPass-header">Change Password</h2>
-    <div class="current-container">
-        <p class="current-label">Current Password</p>
-        <input type="text">
-    </div>
-    <div class="new-container">
-        <p class="new-label">Current Password</p>
-        <input type="text">
+        <div class="password-container">
+            <h2 class="password-header">Change Password</h2>
+            <div class="current-container">
+                <p class="current-label">Current Password</p>
+                <input type="text">
+            </div>
+            <div class="new-container">
+                <p class="new-label">Current Password</p>
+                <input type="text">
+            </div>
+        </div>
     </div>
 </div>

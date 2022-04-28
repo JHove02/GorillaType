@@ -5,9 +5,10 @@
     --header-background: #444;
     --button: #BBB;
     --accent-light: rgb(54, 252, 239);
-    --margin-top: 10rem;
+    --margin-top: 3rem;
     --incorrect-color: rgb(180, 85, 85);
     --label-hover: 240, 240, 240, .2;
+    --black-or-white: white;
 }
 
 body,html {
@@ -43,4 +44,18 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
+}
+
+.heading {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--black-or-white);
+}
+
+.wrapper{
+    width: 65%;
+    max-width: 1000px;
+    margin: auto;
+    font-size: 1.5rem;
+    margin-top: var(--margin-top);
 }
