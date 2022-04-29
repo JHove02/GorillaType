@@ -29,6 +29,7 @@ export class TestComponent implements OnInit {
   in!: string;
   currentIndex: number = -1;
   takingTest?: boolean;
+  backspace: boolean = false;
 
   ngOnInit(): void {
     this.takingTest = false;
@@ -93,7 +94,20 @@ export class TestComponent implements OnInit {
       this.startTimer();
     }
     this.currentIndex = input.length - 1;
-    if (this.currentIndex > -1 && this.currentIndex < this.prompt.length) {
+    if (this.currentIndex >= this.prompt.length) {
+      if(this.backspace)
+      {
+        document.querySelectorAll('.character')[this.currentIndex+1].remove()
+        return;
+      }
+      const testContent = document.querySelector('.test-content');
+      const newChar = document.createElement('span');
+      newChar.classList.add('character', 'incorrect');
+      newChar.innerHTML = input.charAt(this.currentIndex);
+      testContent?.appendChild(newChar);
+      return;
+    }
+    if (this.currentIndex > -1) {
       const prompt = document.querySelectorAll('.character');
       prompt.forEach((element, index) => {
         element.classList.remove('current');
@@ -180,9 +194,17 @@ export class TestComponent implements OnInit {
     this.takingTest = false;
   }
 
-  checkEnter(event: KeyboardEvent): void {
+  checkKey(event: KeyboardEvent): void {
     if (event.key === 'Enter' && this.currentIndex == this.prompt.length - 1) {
       this.completeTest();
+      return;
+    }
+    if(event.key === 'Backspace') {
+      this.backspace = true;
+      return;
+    }
+    else {
+      this.backspace = false;
     }
   }
 
@@ -193,11 +215,13 @@ export class TestComponent implements OnInit {
   }
 
   labelHover(): void {
-    if(!this.takingTest)
+    if (!this.takingTest)
       document.querySelector('.taking')?.classList.add('hover');
   }
 
   cancelLabelHover(): void {
     document.querySelector('.taking')?.classList.remove('hover');
   }
+
+
 }
