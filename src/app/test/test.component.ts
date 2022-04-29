@@ -70,6 +70,12 @@ export class TestComponent implements OnInit {
     document.querySelectorAll('.character').forEach(element => {
       element.remove();
     });
+    document.querySelectorAll('.word').forEach(element => {
+      element.remove();
+    });
+    document.querySelectorAll('.excess').forEach(element => {
+      element.remove();
+    });
     for (let i = 0; i < prompt.length; i++) {
       const word = document.createElement('div');
       word.classList.add('word');
@@ -83,31 +89,45 @@ export class TestComponent implements OnInit {
         word.appendChild(element);
         i++;
       }
-      word.appendChild(space);
+      if(i !== prompt.length)
+        word.appendChild(space);
       container?.appendChild(word);
     }
+    const excess = document.createElement('div');
+    excess.classList.add('excess')
+    container?.appendChild(excess);
+    const excessPlaceholder = document.createElement('span');
+    excessPlaceholder.classList.add('excess-placehold');
+    excessPlaceholder.innerHTML = ' ';
+    container?.appendChild(excessPlaceholder);
   }
 
-  input(input: string): void {
+  input(input: string, event: Event): void {
     if (this.firstInput) {
       this.firstInput = false;
       this.startTimer();
     }
+    const inputEvent = event as InputEvent;
     this.currentIndex = input.length - 1;
+    const excess = document.querySelector('.excess');
+    console.log(this.currentIndex, this.prompt.length)
     if (this.currentIndex >= this.prompt.length) {
-      if(this.backspace)
+      if(inputEvent.inputType === 'deleteContentBackward')
       {
-        document.querySelectorAll('.character')[this.currentIndex+1].remove()
+        const chars = document.querySelectorAll('.character');
+        chars[chars.length - 1].remove();
         return;
       }
-      const testContent = document.querySelector('.test-content');
+      document.querySelectorAll('.character').forEach(element => element.classList.remove('current'))
       const newChar = document.createElement('span');
-      newChar.classList.add('character', 'incorrect');
+      newChar.classList.add('character', 'incorrect', 'extra-char');
       newChar.innerHTML = input.charAt(this.currentIndex);
-      testContent?.appendChild(newChar);
+      excess?.appendChild(newChar);
       return;
     }
     if (this.currentIndex > -1) {
+      document.querySelectorAll('.extra-char').forEach(element => element.remove());
+      document.querySelector('.excess-placehold')?.classList.remove('current');
       const prompt = document.querySelectorAll('.character');
       prompt.forEach((element, index) => {
         element.classList.remove('current');
@@ -118,10 +138,15 @@ export class TestComponent implements OnInit {
       let nextChar = currentChar;
       if (this.currentIndex < this.prompt.length - 1)
         nextChar = prompt[this.currentIndex + 1]
+      if(this.currentIndex === this.prompt.length - 1)
+        nextChar = document.querySelector('.excess-placehold')!;
       nextChar.classList.add('current');
       if (input.charAt(this.currentIndex) !== currentChar.innerHTML) {
         currentChar.classList.remove('correct');
         currentChar.classList.add('incorrect');
+        if(this.currentIndex == this.prompt.length -1) {
+
+        }
       }
       else {
         currentChar.classList.add('correct');
@@ -132,9 +157,13 @@ export class TestComponent implements OnInit {
       }
     }
     else {
-      document.querySelectorAll('.character').forEach(element => {
-        element.classList.remove('correct', 'incorrect');
+      document.querySelectorAll('.character').forEach((element, index) => {
+        element.classList.remove('correct', 'incorrect', 'current');
+        if(index === 0)
+          element.classList.add('current')
       });
+      document.querySelector('.excess-placehold')?.classList.remove('current');
+      document.querySelectorAll('.extra-char').forEach(element => element.remove());
     }
   }
 

@@ -23,7 +23,7 @@ body {
     background-color: var(--background-color);
 }
 
-.character {
+.character, .excess-placehold {
     white-space: pre;
     position: relative;
 }
