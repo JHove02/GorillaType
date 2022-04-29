@@ -17,7 +17,6 @@ export class TestService {
 
   givePrompt(length: number): string {
     let answer: string = "";
-    console.log(this.WORDS.length)
     for (let i = 0; i < length; i++) {
       let index: number = Math.floor(Math.random() * 100);
       answer += this.WORDS[index];

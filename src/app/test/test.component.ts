@@ -105,7 +105,6 @@ export class TestComponent implements OnInit {
     const inputEvent = event as InputEvent;
     this.currentIndex = input.length - 1;
     const excess = document.querySelector('.excess');
-    console.log(this.currentIndex, this.prompt.length)
     if (this.currentIndex >= this.prompt.length) {
       if(inputEvent.inputType === 'deleteContentBackward')
       {
