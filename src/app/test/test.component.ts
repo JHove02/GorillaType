@@ -67,15 +67,10 @@ export class TestComponent implements OnInit {
 
   addPrompt(prompt: string): void {
     const container = document.querySelector('.test-content');
-    document.querySelectorAll('.character').forEach(element => {
-      element.remove();
-    });
-    document.querySelectorAll('.word').forEach(element => {
-      element.remove();
-    });
-    document.querySelectorAll('.excess').forEach(element => {
-      element.remove();
-    });
+    document.querySelectorAll('.character').forEach(element => element.remove());
+    document.querySelectorAll('.word').forEach(element => element.remove());
+    document.querySelectorAll('.excess').forEach(element => element.remove());
+    document.querySelectorAll('.excess-placehold').forEach(element => element.remove());
     for (let i = 0; i < prompt.length; i++) {
       const word = document.createElement('div');
       word.classList.add('word');
