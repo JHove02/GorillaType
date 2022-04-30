@@ -93,5 +93,5 @@
 
 .label-container {
   margin: 0 auto;
-  width: max-content;
+  width: fit-content;
 }
