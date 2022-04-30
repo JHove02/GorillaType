@@ -1,0 +1,97 @@
+.wrapper {
+  margin-top: 20vh;
+}
+
+.test-content{
+  margin-top: .25rem;
+  color: var(--accent-color);
+  padding: 0 .5rem;
+  display: flex;
+  flex-wrap: wrap;
+  border-top: solid 1px rgba(var(--label-hover));
+  justify-content: center;
+  padding-top: .5em;
+  font-size: 1.15rem;
+}
+
+.info {
+  position: relative;
+  border: 2px solid var(--black-or-white);
+  padding: 1em;
+  padding-bottom: .25em;
+  border-radius: .25em;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 1em 7em;
+}
+
+.wpm,
+.accuracy,
+.time {
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.wpm-label,
+.accuracy-label,
+.time-label {
+  font-size: 1.5rem;
+  color: var(--button);
+}
+
+.test-details {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  color: var(--button);
+  font-size: 1.25rem;
+  text-align: right;
+}
+
+.character-info-label {
+  color: var(--button);
+}
+
+.incorrect-label {
+  color: rgb(224, 81, 81);
+}
+
+.next-test {
+  padding: .5em 3em;
+  width: 8rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2em auto 0 auto;
+  border: none;
+  background-color: var(--button);
+  border-radius: .25em;
+  transition: 125ms ease-in-out;
+}
+
+.next-test svg {
+  border-radius: .1em;
+  height: 3em;
+  fill: var(--background-color);
+}
+
+.next-test:hover {
+  box-shadow: 0 .5em 5px 2px var(--header-background);
+  transform: translateY(-3px);
+}
+
+.next-test:active {
+  background-color: #AAA;
+  transition: 50ms ease-in-out;
+}
+
+.label-container {
+  margin: 0 auto;
+  width: max-content;
+}

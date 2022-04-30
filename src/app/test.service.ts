@@ -38,20 +38,20 @@ export class TestService {
     this.finishedPrompt = finishedPrompt;
   }
 
-  
+
   getCorrect(): number {
     return this.correct;
   }
 
   getIncorrect(): number {
-    return this.incorrect; 
+    return this.incorrect;
   }
-  
+
   getTime(): string {
-    return this.time; 
+    return this.time;
   }
 
   getFinishedPrompt(): Element {
-    return this.finishedPrompt; 
+    return this.finishedPrompt;
   }
 }

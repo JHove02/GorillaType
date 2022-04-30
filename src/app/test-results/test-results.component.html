@@ -1,6 +1,113 @@
-<div class="info">
-  Correct: {{correct}}
-  Incorrect: {{incorrect}}
-  Accuracy: {{accuracy}}
-  Time: {{time}}
+<div class="wrapper">
+  Results
+  <div class="info">
+    <div class="stats">
+      <div class="wpm">
+        <div class="wpm-label">wpm</div>
+        {{wpm}}
+      </div>
+      <div class="accuracy">
+        <div class="accuracy-label">acc</div>
+        {{accuracy}}%
+      </div>
+      <div class="time">
+        <div class="time-label">time</div>
+        {{time}}
+      </div>
+      <div class="test-details">
+        <div class="char-details">
+          chars: <span class="correct">{{correct}}</span> / <span class="incorrect-label">{{incorrect}}</span>
+        </div>
+        <div class="word-details">
+          words: {{testLength}}
+        </div>
+      </div>
+    </div>
+    <div class="label-container">
+
+      <!-- FOR TESTING -->
+      <!-- <label _ngcontent-kik-c50="" for="input" class="test-content taking">
+        <div class="word">
+          <span class="character">s</span>
+          <span class="character">o</span>
+          &nbsp;
+        </div>
+        <div class="word">
+          <span class="character">c</span>
+          <span class="character">o</span>
+          <span class="character">u</span>
+          <span class="character">l</span>
+          <span class="character">d</span>
+          &nbsp;
+        </div>
+        <div class="word">
+          <span class="character">i</span>
+          <span class="character">s</span>
+          &nbsp;
+        </div>
+        <div class="word">
+          <span class="character">s</span>
+          <span class="character">h</span>
+          <span class="character">a</span>
+          <span class="character">r</span>
+          <span class="character">e</span>
+          &nbsp;
+        </div>
+        <div class="word">
+          <span class="character">t</span>
+          <span class="character">h</span>
+          <span class="character">a</span>
+          <span class="character">t</span>
+          &nbsp;
+        </div>
+        <div class="word">
+          <span class="character">n</span>
+          <span class="character">o</span>
+          <span class="character">w</span>
+          &nbsp;
+        </div>
+        <div class="word">
+          <span class="character">t</span>
+          <span class="character">h</span>
+          <span class="character">e</span>
+          &nbsp;
+        </div>
+        <div class="word">
+          <span class="character">l</span>
+          <span class="character">o</span>
+          <span class="character">o</span>
+          <span class="character">k</span>
+          &nbsp;
+        </div>
+        <div class="word">
+          <span class="character">f</span>
+          <span class="character">i</span>
+          <span class="character">r</span>
+          <span class="character">s</span>
+          <span class="character">t</span>
+          &nbsp;
+        </div>
+        <div class="word">
+          <span class="character">m</span>
+          <span class="character">a</span>
+          <span class="character">y</span>
+        </div>
+        <div class="excess"></div>
+        <span class="excess-placehold"> </span>
+      </label> -->
+      <!-- END TESTING -->
+    </div>
+  </div>
 </div>
+<button class="next-test" (click)="nextTest()">
+  <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+    y="0px" width="401.948px" height="401.949px" viewBox="0 0 401.948 401.949"
+    style="enable-background:new 0 0 401.948 401.949;" xml:space="preserve">
+    <g><g><g id="Layer_5_55_">
+      <path d="M397,190.734L228.738,73.444c-6.599-5.632-11.996-3.147-11.996,5.528v49.068c0,8.672-7.099,15.77-15.77,15.77
+       l-104.176,0.156H15.69v0.125C7.051,144.139,0.002,151.214,0,159.857l0.002,82.789c0,8.673,7.095,15.771,15.765,15.771
+       l183.426-0.275h1.834c8.647,0.028,15.717,7.107,15.717,15.765v49.067c0,8.675,5.397,11.163,11.993,5.535l168.265-117.294
+       C403.598,205.579,403.598,196.367,397,190.734z" />
+        </g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+  </svg>
+</button>

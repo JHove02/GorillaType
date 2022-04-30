@@ -166,6 +166,7 @@ export class TestComponent implements OnInit {
     let correct: number = document.querySelectorAll('.correct').length;
     let time: string = this.minutesDisplay + ':' + this.secondsDisplay;
     document.querySelectorAll('.character').forEach(element => element.classList.remove('current'));
+    document.querySelector('.excess-placehold')?.classList.remove('current');
     let finishedPrompt: Element = document.querySelector('.test-content')!;
     finishedPrompt.classList.remove('taking');
     this.testService.sendResults(incorrect, correct, time, finishedPrompt);

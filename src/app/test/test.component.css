@@ -49,7 +49,7 @@
 .test-header .test-header-title {
     font-size: 2rem;
     transition: 200ms ease-in-out;
-    font-weight: bold; 
+    font-weight: normal; 
 }
 
 .stop-test {
