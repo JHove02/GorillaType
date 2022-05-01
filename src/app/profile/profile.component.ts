@@ -12,6 +12,11 @@ export class ProfileComponent implements OnInit {
   public newUsername: string = "";
   public newPassword: string = "";
   public id: string = "";
+  public createdUser: boolean = false;
+  public LogIn: boolean =true;
+  public CreateUser: boolean = false;
+  public logUsername: string = "";
+  public logPassword: string = "";
   constructor(private userServ:UserService) { }
   fetchData(){
     this.userServ.getUsers().subscribe(data =>{
@@ -21,7 +26,11 @@ export class ProfileComponent implements OnInit {
   }
   ngOnInit(): void {
     console.log('hi')
+    this.createdUser = false;
     this.fetchData();
+  }
+  login(){
+
   }
 
   addNewUser(){
@@ -39,7 +48,19 @@ export class ProfileComponent implements OnInit {
       console.log(this.id );
       this.fetchData();
     })
+    this.createdUser = true;
+    this.LogIn = true;
+    this.CreateUser = false;
   }
+  setLogin(){
+    this.LogIn = true;
+    this.LogIn = false;
+  }
+  setCreateUser(){
+    this.CreateUser = true;
+    this.LogIn = false;
+  }
+
   deleteCarson(){
     this.userServ.deleteUser("asdf");
   }
