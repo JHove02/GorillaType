@@ -25,16 +25,29 @@ export class ProfileComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    console.log('hi')
+    
     this.createdUser = false;
     this.fetchData();
+   
+    this.userServ.getUsers().subscribe();
+    this.userServ.getUsers();
+    this.userServ.getUsers();
+    
   }
   login(){
-
+    let id: string = "";
+    this.userServ.logIn(this.logUsername,this.logPassword).subscribe(data =>{
+      id = data;
+    });
+    console.log(id);
+    if( id != ""){
+      this.id = id;
+    }
+  
   }
 
   addNewUser(){
-    console.log('hello');
+   
     const newUser: User = {
       username: this.newUsername,
       password: this.newPassword,
@@ -44,8 +57,8 @@ export class ProfileComponent implements OnInit {
     }
     this.userServ.addUser(newUser).subscribe(data =>{
       //THIS IS IMPORTANT VERY I MPORTANT
-      this.id = Object.values(data)[0];
-      console.log(this.id );
+      let tempid = Object.values(data)[0];
+      console.log(tempid );
       this.fetchData();
     })
     this.createdUser = true;
@@ -54,7 +67,7 @@ export class ProfileComponent implements OnInit {
   }
   setLogin(){
     this.LogIn = true;
-    this.LogIn = false;
+    this.CreateUser = false;
   }
   setCreateUser(){
     this.CreateUser = true;
@@ -64,4 +77,9 @@ export class ProfileComponent implements OnInit {
   deleteCarson(){
     this.userServ.deleteUser("asdf");
   }
+
+
+
+  
+
 }
