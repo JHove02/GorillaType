@@ -11,12 +11,13 @@ export class ProfileComponent implements OnInit {
   private users: User[] =[];
   public newUsername: string = "";
   public newPassword: string = "";
-  public id: string = "";
+  public id: string = "d";
   public createdUser: boolean = false;
   public LogIn: boolean =true;
   public CreateUser: boolean = false;
   public logUsername: string = "";
   public logPassword: string = "";
+  public signedIn: boolean = false;
   constructor(private userServ:UserService) { }
   fetchData(){
     this.userServ.getUsers().subscribe(data =>{
@@ -25,25 +26,28 @@ export class ProfileComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    
+    this.isSignedIn()
     this.createdUser = false;
     this.fetchData();
-   
-    this.userServ.getUsers().subscribe();
-    this.userServ.getUsers();
-    this.userServ.getUsers();
+    
+    this.id = this.userServ.getUserId();
+    
     
   }
   login(){
     let id: string = "";
     this.userServ.logIn(this.logUsername,this.logPassword).subscribe(data =>{
       id = data;
+      console.log('hello '+ data)
+      this.userServ.setUserId(id);
+      this.id = this.userServ.getUserId();
+      this.isSignedIn();
     });
-    console.log(id);
-    if( id != ""){
-      this.id = id;
-    }
-  
+    
+    
+    
+    
+    
   }
 
   addNewUser(){
@@ -73,10 +77,19 @@ export class ProfileComponent implements OnInit {
     this.CreateUser = true;
     this.LogIn = false;
   }
-
+  isSignedIn(){
+    let id: string= this.userServ.getUserId()
+    if(id == ""){
+      this.signedIn = false;
+      console.log('not signed in')
+    }else{
+      this.signedIn = true;
+    }
+  }
   deleteCarson(){
     this.userServ.deleteUser("asdf");
   }
+  
 
 
 
