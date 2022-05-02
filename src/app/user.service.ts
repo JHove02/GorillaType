@@ -83,12 +83,13 @@ export class UserService {
     
 
   }
-  private getCurrentUserSubscription(){
+   getCurrentUser(){
     console.log('THis is the current userId: ' +this.userId);
     return this.http.get<User>(`https://gorillatype-47b71-default-rtdb.firebaseio.com/user/${this.userId}.json`).pipe(map(responseData => {
       return responseData;
     }));
   }
+  /*
   getCurrentUser(){
     let currentUser: User ={username:'',password:'', TenWPM : -1, TwentyFiveWPM: -1, FiftyWPM: -1};
     this.getCurrentUserSubscription().subscribe(data =>{
@@ -97,7 +98,7 @@ export class UserService {
     return currentUser;
     
   }
-
+  */
   
   
 }

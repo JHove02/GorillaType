@@ -37,3 +37,10 @@
         
     </div>
 </div>
+<div *ngIf="signedIn">
+    <h2> {{currentUser.username}}</h2>
+    <h4>WPM</h4>
+    <p>Ten Word Test WPM: {{currentUser.TenWPM}}</p>
+    <p>Twenty Five Word Test WPM: {{currentUser.TwentyFiveWPM}}</p>
+    <p>Fifty Word Test WPM: {{currentUser.FiftyWPM}}</p>
+</div>

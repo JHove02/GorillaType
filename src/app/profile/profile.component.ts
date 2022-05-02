@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
   public logPassword: string = "";
   public signedIn: boolean = false;
   public incorrectLogin: boolean = false;
+  public currentUser: User = {username:'',password:'', TenWPM : -1, TwentyFiveWPM: -1, FiftyWPM: -1};
   constructor(private userServ:UserService) { }
   fetchData(){
     this.userServ.getUsers().subscribe(data =>{
@@ -46,6 +47,10 @@ export class ProfileComponent implements OnInit {
       this.isSignedIn();
       if(!this.signedIn){
         this.incorrectLogin = true;
+      }else{
+        this.userServ.getCurrentUser().subscribe(data =>{
+          this.currentUser = data;
+        });
       }
     });
     
@@ -88,6 +93,7 @@ export class ProfileComponent implements OnInit {
       this.signedIn = false;
       console.log('not signed in')
     }else{
+      
       this.signedIn = true;
       this.createdUser = false;
     this.LogIn = false;
