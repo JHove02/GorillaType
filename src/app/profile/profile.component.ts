@@ -11,7 +11,15 @@ export class ProfileComponent implements OnInit {
   private users: User[] =[];
   public newUsername: string = "";
   public newPassword: string = "";
-  public id: string = "";
+  public id: string = "d";
+  public createdUser: boolean = false;
+  public LogIn: boolean =true;
+  public CreateUser: boolean = false;
+  public logUsername: string = "";
+  public logPassword: string = "";
+  public signedIn: boolean = false;
+  public incorrectLogin: boolean = false;
+  public currentUser: User = {username:'',password:'', TenWPM : -1, TwentyFiveWPM: -1, FiftyWPM: -1};
   constructor(private userServ:UserService) { }
   fetchData(){
     this.userServ.getUsers().subscribe(data =>{
@@ -20,12 +28,40 @@ export class ProfileComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    console.log('hi')
+    this.isSignedIn()
+    this.incorrectLogin = false;
+    this.createdUser = false;
     this.fetchData();
+    
+    this.id = this.userServ.getUserId();
+    
+    
+  }
+  login(){
+    let id: string = "";
+    this.userServ.logIn(this.logUsername,this.logPassword).subscribe(data =>{
+      id = data;
+      console.log('hello '+ data)
+      this.userServ.setUserId(id);
+      this.id = this.userServ.getUserId();
+      this.isSignedIn();
+      if(!this.signedIn){
+        this.incorrectLogin = true;
+      }else{
+        this.userServ.getCurrentUser().subscribe(data =>{
+          this.currentUser = data;
+        });
+      }
+    });
+    
+    
+    
+    
+    
   }
 
   addNewUser(){
-    console.log('hello');
+   
     const newUser: User = {
       username: this.newUsername,
       password: this.newPassword,
@@ -35,12 +71,42 @@ export class ProfileComponent implements OnInit {
     }
     this.userServ.addUser(newUser).subscribe(data =>{
       //THIS IS IMPORTANT VERY I MPORTANT
-      this.id = Object.values(data)[0];
-      console.log(this.id );
+      let tempid = Object.values(data)[0];
+      console.log(tempid );
       this.fetchData();
     })
+    this.createdUser = true;
+    this.LogIn = true;
+    this.CreateUser = false;
+  }
+  setLogin(){
+    this.LogIn = true;
+    this.CreateUser = false;
+  }
+  setCreateUser(){
+    this.CreateUser = true;
+    this.LogIn = false;
+  }
+  isSignedIn(){
+    let id: string= this.userServ.getUserId()
+    if(id == ""){
+      this.signedIn = false;
+      console.log('not signed in')
+    }else{
+      
+      this.signedIn = true;
+      this.createdUser = false;
+    this.LogIn = false;
+    this.CreateUser = false;
+    }
   }
   deleteCarson(){
     this.userServ.deleteUser("asdf");
   }
+  
+
+
+
+  
+
 }

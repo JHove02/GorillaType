@@ -1,10 +1,46 @@
 
-<h2>Create a user</h2>
 
-<p>Username</p>
-<input type="text" [(ngModel)] = "newUsername">
+<p>{{id}}</p>
+<div *ngIf="!signedIn">
+    <button (click) = "setLogin()">Log In</button>
+    <button (click) = "setCreateUser()">Create User</button>
 
-<p>Password</p>
-<input type="text" [(ngModel)] = "newPassword">
-<br>
-<button (click) = "addNewUser()">Create</button>
+    <div *ngIf="CreateUser">
+        <h2>Create a user</h2>
+        <p>Username</p>
+        <input type="text" [(ngModel)] = "newUsername">
+
+        <p>Password</p>
+        <input type="text" [(ngModel)] = "newPassword">
+        <br>
+        <button (click) = "addNewUser()">Create</button>
+
+    </div>
+
+    <div *ngIf="createdUser">
+        You created an account! Now its time to log in!
+    </div>
+
+    <div *ngIf= "LogIn">
+        <h2>Log In</h2>
+        <p>Username</p>
+        <input type="text" [(ngModel)] = "logUsername">
+
+        <p>Password</p>
+        <input type="text" [(ngModel)] = "logPassword">
+        <br>
+        <div *ngIf="incorrectLogin">
+            <p style="color:lightcoral">The username and password entered are incorrect</p>
+        </div>
+        <br>
+        <button (click) = "login()">Log In</button>
+        
+    </div>
+</div>
+<div *ngIf="signedIn">
+    <h2> {{currentUser.username}}</h2>
+    <h4>WPM</h4>
+    <p>Ten Word Test WPM: {{currentUser.TenWPM}}</p>
+    <p>Twenty Five Word Test WPM: {{currentUser.TwentyFiveWPM}}</p>
+    <p>Fifty Word Test WPM: {{currentUser.FiftyWPM}}</p>
+</div>
