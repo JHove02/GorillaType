@@ -1,32 +1,39 @@
 
 
 <p>{{id}}</p>
-<button (click) = "setLogin()">Log In</button>
-<button (click) = "setCreateUser()">Create User</button>
+<div *ngIf="!signedIn">
+    <button (click) = "setLogin()">Log In</button>
+    <button (click) = "setCreateUser()">Create User</button>
 
-<div *ngIf="CreateUser">
-    <h2>Create a user</h2>
-    <p>Username</p>
-    <input type="text" [(ngModel)] = "newUsername">
+    <div *ngIf="CreateUser">
+        <h2>Create a user</h2>
+        <p>Username</p>
+        <input type="text" [(ngModel)] = "newUsername">
 
-    <p>Password</p>
-    <input type="text" [(ngModel)] = "newPassword">
-    <br>
-    <button (click) = "addNewUser()">Create</button>
+        <p>Password</p>
+        <input type="text" [(ngModel)] = "newPassword">
+        <br>
+        <button (click) = "addNewUser()">Create</button>
 
-</div>
+    </div>
 
-<div *ngIf="createdUser">
-    You created an account! Now its time to log in!
-</div>
+    <div *ngIf="createdUser">
+        You created an account! Now its time to log in!
+    </div>
 
-<div *ngIf= "LogIn">
-    <h2>Log In</h2>
-    <p>Username</p>
-    <input type="text" [(ngModel)] = "logUsername">
+    <div *ngIf= "LogIn">
+        <h2>Log In</h2>
+        <p>Username</p>
+        <input type="text" [(ngModel)] = "logUsername">
 
-    <p>Password</p>
-    <input type="text" [(ngModel)] = "logPassword">
-    <br>
-    <button (click) = "login()">Log In</button>
+        <p>Password</p>
+        <input type="text" [(ngModel)] = "logPassword">
+        <br>
+        <div *ngIf="incorrectLogin">
+            <p style="color:lightcoral">The username and password entered are incorrect</p>
+        </div>
+        <br>
+        <button (click) = "login()">Log In</button>
+        
+    </div>
 </div>

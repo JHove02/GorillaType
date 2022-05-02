@@ -62,7 +62,7 @@ export class UserService {
 
     return this.http.get<User[]>('https://gorillatype-47b71-default-rtdb.firebaseio.com/' + 'user.json')
     .pipe(map(responseData => {
-      let signedId:string = 'test'
+      let signedId:string = ''
       console.log(responseData);
       for(const key in responseData){
         console.log(key);

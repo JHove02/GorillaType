@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   public logUsername: string = "";
   public logPassword: string = "";
   public signedIn: boolean = false;
+  public incorrectLogin: boolean = false;
   constructor(private userServ:UserService) { }
   fetchData(){
     this.userServ.getUsers().subscribe(data =>{
@@ -27,6 +28,7 @@ export class ProfileComponent implements OnInit {
   }
   ngOnInit(): void {
     this.isSignedIn()
+    this.incorrectLogin = false;
     this.createdUser = false;
     this.fetchData();
     
@@ -42,6 +44,9 @@ export class ProfileComponent implements OnInit {
       this.userServ.setUserId(id);
       this.id = this.userServ.getUserId();
       this.isSignedIn();
+      if(!this.signedIn){
+        this.incorrectLogin = true;
+      }
     });
     
     
@@ -84,6 +89,9 @@ export class ProfileComponent implements OnInit {
       console.log('not signed in')
     }else{
       this.signedIn = true;
+      this.createdUser = false;
+    this.LogIn = false;
+    this.CreateUser = false;
     }
   }
   deleteCarson(){
