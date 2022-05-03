@@ -1,0 +1,110 @@
+.loggedIn {
+    position: relative;
+    border: 2px solid var(--black-or-white);
+    padding: 1em;
+    padding-bottom: .25em;
+    border-radius: .25em;
+}
+
+.loggedWrapper {
+    width: 50%;
+    margin: 20vh auto auto auto;
+}
+
+.wpmWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 1em 7em;
+}
+
+.WPM{
+    text-align: center;
+}
+
+.username{
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.signin{
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonsWrapper{
+    justify-content: center;
+    display: flex;
+    height: 4rem;
+    width: 100%;
+}
+
+.buttonsWrapper button{
+    height: 2.2rem;
+    margin: 1.5em 1em 0em 0em;
+    width: 6rem;
+    border: none;
+    background-color: var(--button);
+    border-radius: .25em;
+    transition: 125ms ease-in-out;
+    color: var(--background-color);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+button:hover{
+    box-shadow: 0 .5em 5px 2px var(--header-background);
+    transform: translateY(-3px);
+}
+
+.login button{
+    border: none;
+    background-color: var(--button);
+    border-radius: .25em;
+    transition: 125ms ease-in-out;
+    color: var(--background-color);
+    font-size: 15px;
+    height: 1.5rem;
+    width: 4rem;
+    margin-left: 10%;
+    font-weight: 600;
+}
+
+.signin button{
+    border: none;
+    background-color: var(--button);
+    border-radius: .25em;
+    transition: 125ms ease-in-out;
+    color: var(--background-color);
+    font-size: 15px;
+    height: 1.5rem;
+    width: 4rem;
+    margin: 4% 0 10% 10%;
+    font-weight: 600;
+}
+
+.login, .signin{
+    width: 35%;
+}
+
+h2{
+    text-align: center;
+}
+
+input{
+    width: 80%;
+    margin-left: 10%;
+}
+
+p{
+    margin-left: 10%;
+    margin-bottom: 0;
+    font-weight: 600;
+}

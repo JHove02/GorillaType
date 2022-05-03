@@ -1,19 +1,19 @@
-
-
-<p>{{id}}</p>
-<div *ngIf="!signedIn">
-    <button (click) = "setLogin()">Log In</button>
-    <button (click) = "setCreateUser()">Create User</button>
-
-    <div *ngIf="CreateUser">
+<!-- <p>{{id}}</p> -->
+<div class="container"*ngIf="!signedIn">
+    <div class="buttonsWrapper">
+        <button (click)="setLogin()">Log In</button>
+        <button (click)="setCreateUser()">Create User</button>    
+    </div>
+    
+    <div class="signin" *ngIf="CreateUser">
         <h2>Create a user</h2>
         <p>Username</p>
-        <input type="text" [(ngModel)] = "newUsername">
+        <input type="text" [(ngModel)]="newUsername">
 
         <p>Password</p>
-        <input type="text" [(ngModel)] = "newPassword">
+        <input type="text" [(ngModel)]="newPassword">
         <br>
-        <button (click) = "addNewUser()">Create</button>
+        <button (click)="addNewUser()">Create</button>
 
     </div>
 
@@ -21,26 +21,32 @@
         You created an account! Now its time to log in!
     </div>
 
-    <div *ngIf= "LogIn">
+    <div class="login" *ngIf="LogIn">
         <h2>Log In</h2>
         <p>Username</p>
-        <input type="text" [(ngModel)] = "logUsername">
+        <input type="text" [(ngModel)]="logUsername">
 
         <p>Password</p>
-        <input type="text" [(ngModel)] = "logPassword">
+        <input type="text" [(ngModel)]="logPassword">
         <br>
         <div *ngIf="incorrectLogin">
             <p style="color:lightcoral">The username and password entered are incorrect</p>
         </div>
         <br>
-        <button (click) = "login()">Log In</button>
-        
+        <button (click)="login()">Log In</button>
+
     </div>
 </div>
-<div *ngIf="signedIn">
-    <h2> {{currentUser.username}}</h2>
-    <h4>WPM</h4>
-    <p>Ten Word Test WPM: {{currentUser.TenWPM}}</p>
-    <p>Twenty Five Word Test WPM: {{currentUser.TwentyFiveWPM}}</p>
-    <p>Fifty Word Test WPM: {{currentUser.FiftyWPM}}</p>
+
+<div class="loggedWrapper">
+    <div class="loggedIn" *ngIf="signedIn">
+        <h2 class="username"> {{currentUser.username}}</h2>
+        <h3 class="WPM">WPM</h3>
+        <div class="wpmWrapper">
+            <p>10 Word: {{currentUser.TenWPM}}</p>
+            <p>25 Word: {{currentUser.TwentyFiveWPM}}</p>
+            <p>50 Word: {{currentUser.FiftyWPM}}</p>
+        </div>
+    </div>
+
 </div>

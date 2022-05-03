@@ -35,3 +35,30 @@ button {
   border-radius: .5em;
   color: var(--button);
 }
+
+p{
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+input{
+  width: 100%;
+  margin-top: 0;
+}
+
+.passwordSubmit{
+  border: none;
+  background-color: var(--button);
+  border-radius: .25em;
+  transition: 125ms ease-in-out;
+  color: var(--background-color);
+  font-size: 15px;
+  height: 1.5rem;
+  width: 4rem;
+  font-weight: 600;
+}
+
+button:hover{
+  box-shadow: 0 .5em 5px 2px var(--header-background);
+  transform: translateY(-3px);
+}
