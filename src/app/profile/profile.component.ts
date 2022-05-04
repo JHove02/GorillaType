@@ -65,10 +65,16 @@ export class ProfileComponent implements OnInit {
   TestData() {
     this.userServ.getUsers().subscribe(data => {
       this.users = data;
+      let s: string[] = [];
       for (let i = 0; i < data.length; i++) {
-        console.log(Object.values(data[i].username));
-        console.log("test")
+        let temp: string = "";
+
+        for (let j = 0; j < Object.values(data[i].username).length; j++){
+          temp += Object.values(data[i].username)[j];
+        }
+        s.push(temp)
       }
+      console.log(s);
     })
   }
 
