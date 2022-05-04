@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { FormsModule } from '@angular/forms';
+import { ConditionalExpr } from '@angular/compiler';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -73,13 +74,15 @@ export class ProfileComponent implements OnInit {
         }
         s.push(temp)
       }
-      console.log(s);
+      //console.log(s);
     })
   }
-s: string[] = [];
 
 test(){
-  this.getUsernames(this.s)
+  let s: string[] = [];
+  this.getUsernames(s);
+  console.log(s);
+  console.log(s[1]);
 }
 
 //--------------------------------------------------------
@@ -95,10 +98,27 @@ test(){
       FiftyWPM: 0
     }
     // section for verifying username is not in use
-    let original: boolean = false;
-    let s: string[] = [];
+    let duplicate: boolean = false; //if duplitcate is true no new account will be made and error message will appear
+    let s: string[] = []; //stores result from getusernames()
+    let temp: string[] =[]; //playing around with why it wont work
+    temp[0] = newUser.username;
     this.getUsernames(s);
-    if (s.includes(newUser.username)){
+    //console.log(s);
+    //console.log(temp);
+    //console.log(s[0]);
+    //console.log(s.length);
+    for(let i = 0; i < s.length; i++) { //s.length is 0 which is causing problems
+      console.log("--------------")
+      console.log(temp[0]);
+      console.log(s[i]);
+      console.log("--------------")
+      if (temp[0] == s[i]){
+        console.log("duplicate found");
+        duplicate = true;
+      }
+    }
+
+    if (duplicate == true){
       console.log("username is a duplicate")
     }
     else{
