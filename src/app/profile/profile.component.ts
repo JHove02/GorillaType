@@ -77,12 +77,12 @@ export class ProfileComponent implements OnInit {
       //console.log(s);
     })
   }
+s: string[] = [];
 
-test(){
-  let s: string[] = [];
-  this.getUsernames(s);
-  console.log(s);
-  console.log(s[1]);
+test(){ 
+  this.getUsernames(this.s);
+  console.log(this.s);
+  console.log(this.s.length);
 }
 
 //--------------------------------------------------------
@@ -99,9 +99,9 @@ test(){
     }
     // section for verifying username is not in use
     let duplicate: boolean = false; //if duplitcate is true no new account will be made and error message will appear
-    let s: string[] = []; //stores result from getusernames()
     let temp: string[] =[]; //playing around with why it wont work
     temp[0] = newUser.username;
+    let s: string[] = []; //stores result from getusernames()
     this.getUsernames(s);
     //console.log(s);
     //console.log(temp);
