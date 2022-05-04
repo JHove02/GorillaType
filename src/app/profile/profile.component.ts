@@ -59,6 +59,8 @@ export class ProfileComponent implements OnInit {
 
 
   }
+//--------------------------------------------------------
+//user authentication testing please disregard
 
   TestData() {
     this.userServ.getUsers().subscribe(data => {
@@ -74,6 +76,7 @@ test(){
   this.TestData()
 }
 
+//--------------------------------------------------------
 
 
   addNewUser() {
