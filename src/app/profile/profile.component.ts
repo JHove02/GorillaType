@@ -60,6 +60,12 @@ export class ProfileComponent implements OnInit {
 
   }
 
+test(){
+  console.log(this.fetchData())
+}
+
+
+
   addNewUser() {
 
     const newUser: User = {
@@ -69,6 +75,13 @@ export class ProfileComponent implements OnInit {
       TwentyFiveWPM: 0,
       FiftyWPM: 0
     }
+    // section for verifying username is not in use
+    let original: boolean = false;
+
+
+
+
+
     this.userServ.addUser(newUser).subscribe(data => {
       //THIS IS IMPORTANT VERY I MPORTANT
       let tempid = Object.values(data)[0];
