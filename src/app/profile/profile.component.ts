@@ -60,8 +60,18 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  TestData() {
+    this.userServ.getUsers().subscribe(data => {
+      this.users = data;
+      for (let i = 0; i < data.length; i++) {
+        console.log (data[i]);
+        console.log("working");
+      }
+    })
+  }
+
 test(){
-  console.log(this.fetchData())
+  this.TestData()
 }
 
 
