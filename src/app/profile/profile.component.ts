@@ -62,10 +62,9 @@ export class ProfileComponent implements OnInit {
 //--------------------------------------------------------
 //user authentication testing please disregard
 
-  TestData() {
+  getUsernames(s: string[]) {
     this.userServ.getUsers().subscribe(data => {
       this.users = data;
-      let s: string[] = [];
       for (let i = 0; i < data.length; i++) {
         let temp: string = "";
 
@@ -77,9 +76,10 @@ export class ProfileComponent implements OnInit {
       console.log(s);
     })
   }
+s: string[] = [];
 
 test(){
-  this.TestData()
+  this.getUsernames(this.s)
 }
 
 //--------------------------------------------------------
@@ -96,11 +96,13 @@ test(){
     }
     // section for verifying username is not in use
     let original: boolean = false;
-
-
-
-
-
+    let s: string[] = [];
+    this.getUsernames(s);
+    if (s.includes(newUser.username)){
+      console.log("username is a duplicate")
+    }
+    else{
+      console.log("username is unique and will be created")
     this.userServ.addUser(newUser).subscribe(data => {
       //THIS IS IMPORTANT VERY I MPORTANT
       let tempid = Object.values(data)[0];
@@ -110,6 +112,7 @@ test(){
     this.createdUser = true;
     this.LogIn = true;
     this.CreateUser = false;
+  }
   }
   setLogin() {
     this.LogIn = true;
