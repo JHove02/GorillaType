@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   public newPassword: string = "";
   public id: string = "d";
   public createdUser: boolean = false;
+  public duplicateUser: boolean = false;
   public LogIn: boolean = true;
   public CreateUser: boolean = false;
   public logUsername: string = "";

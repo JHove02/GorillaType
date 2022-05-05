@@ -20,6 +20,9 @@
     <div *ngIf="createdUser">
         You created an account! Now its time to log in!
     </div>
+    <div *ngIf="duplicateUser">
+        Username already exists, please try again.    
+    </div>
 
     <div class="login" *ngIf="LogIn">
         <h2>Log In</h2>
