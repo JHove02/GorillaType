@@ -19,7 +19,7 @@ export class UserService {
     return this.userId;
   }
   addUser(newUser: User){
-    
+    console.log("creating new user")
     return this.http.post('https://gorillatype-47b71-default-rtdb.firebaseio.com/'+ 'user.json', newUser);
 
   }
@@ -83,6 +83,43 @@ export class UserService {
     
 
   }
+  verifyUseroname(newUser: User){
+    //this.id = Object.values(data)[0]
+      
+     
+    return this.http.get<User[]>('https://gorillatype-47b71-default-rtdb.firebaseio.com/' + 'user.json')
+    .pipe(map(responseData => {
+      console.log(responseData);
+      let exists: boolean = false;
+      for(const key in responseData){
+        console.log(key);
+        if(newUser.username == responseData[key].username){
+          //console.log(key);
+         exists = true;
+        }
+        else{
+          console.log("something");
+        }
+      }
+      if(exists == false){
+       console.log("username is unique cool beans");
+       this.addUser(newUser).subscribe(data => {
+         //THIS IS IMPORTANT VERY I MPORTANT
+         let tempid = Object.values(data)[0];
+         console.log(tempid);
+       })
+      }
+      else{
+        console.log("duplicate username");
+      }
+      return exists;
+     
+    })
+    );
+     
+     
+     }
+    
    getCurrentUser(){
     console.log('THis is the current userId: ' +this.userId);
     return this.http.get<User>(`https://gorillatype-47b71-default-rtdb.firebaseio.com/user/${this.userId}.json`).pipe(map(responseData => {
