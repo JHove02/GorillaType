@@ -38,15 +38,16 @@ button {
   cursor: pointer;
 }
 
-input{
+input {
   width: 100%;
   margin-top: 0;
 }
 
 .password-submit {
   border: none;
-  border-radius: .25em;
   background-color: var(--button);
+  border-radius: .25em;
+  transition: 125ms ease-in-out;
   color: var(--background-color);
   font-size: 15px;
   height: 2rem;
@@ -64,6 +65,7 @@ input{
     background-color: var(--accent-color);
     color: var(--background-color);
   }
+
   100% {
     background-color: var(--button);
     color: var(--background-color);
@@ -71,8 +73,8 @@ input{
 }
 
 .password-submit:hover {
-  background-color: var(--header-background);
-  color: var(--button);
+  box-shadow: 0 .5em 5px 2px var(--header-background);
+  transform: translateY(-3px);
 }
 
 .password-container {
