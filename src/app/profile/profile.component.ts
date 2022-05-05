@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { FormsModule } from '@angular/forms';
+import { ConditionalExpr } from '@angular/compiler';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -59,6 +60,33 @@ export class ProfileComponent implements OnInit {
 
 
   }
+//--------------------------------------------------------
+//user authentication testing please disregard
+
+  getUsernames(s: string[]) {
+    this.userServ.getUsers().subscribe(data => {
+      this.users = data;
+      for (let i = 0; i < data.length; i++) {
+        let temp: string = "";
+
+        for (let j = 0; j < Object.values(data[i].username).length; j++){
+          temp += Object.values(data[i].username)[j];
+        }
+        s.push(temp)
+      }
+      //console.log(s);
+    })
+  }
+s: string[] = [];
+
+test(){ 
+  this.getUsernames(this.s);
+  console.log(this.s);
+  console.log(this.s.length);
+}
+
+//--------------------------------------------------------
+
 
   addNewUser() {
 
@@ -69,6 +97,32 @@ export class ProfileComponent implements OnInit {
       TwentyFiveWPM: 0,
       FiftyWPM: 0
     }
+    // section for verifying username is not in use
+    let duplicate: boolean = false; //if duplitcate is true no new account will be made and error message will appear
+    let temp: string[] =[]; //playing around with why it wont work
+    temp[0] = newUser.username;
+    let s: string[] = []; //stores result from getusernames()
+    this.getUsernames(s);
+    //console.log(s);
+    //console.log(temp);
+    //console.log(s[0]);
+    //console.log(s.length);
+    for(let i = 0; i < s.length; i++) { //s.length is 0 which is causing problems
+      console.log("--------------")
+      console.log(temp[0]);
+      console.log(s[i]);
+      console.log("--------------")
+      if (temp[0] == s[i]){
+        console.log("duplicate found");
+        duplicate = true;
+      }
+    }
+
+    if (duplicate == true){
+      console.log("username is a duplicate")
+    }
+    else{
+      console.log("username is unique and will be created")
     this.userServ.addUser(newUser).subscribe(data => {
       //THIS IS IMPORTANT VERY I MPORTANT
       let tempid = Object.values(data)[0];
@@ -78,6 +132,7 @@ export class ProfileComponent implements OnInit {
     this.createdUser = true;
     this.LogIn = true;
     this.CreateUser = false;
+  }
   }
   setLogin() {
     this.LogIn = true;
