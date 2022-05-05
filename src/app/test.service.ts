@@ -38,7 +38,6 @@ export class TestService {
     this.finishedPrompt = finishedPrompt;
   }
 
-
   getCorrect(): number {
     return this.correct;
   }

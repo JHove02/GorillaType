@@ -1,5 +1,4 @@
 <div class="wrapper">
-
     <div class="heading">Settings</div>
     <div class="themes-password-flex">
         <div class="themes-container">
@@ -14,17 +13,17 @@
             </div>
         </div>
 
-        <div class="password-container">
+        <div class="password-container" *ngIf='loggedIn'>
             <h2 class="password-header">Change Password</h2>
             <div class="current-container">
-                <p class="current-label">Current Password</p>
-                <input type="text">
+                <label for="current-pass">Current Password:</label>
+                <input type="text" name="current-pass" id="current-pass">
             </div>
             <div class="new-container">
-                <p class="new-label">Current Password</p>
-                <input type="text">
+                <label for="new-pass">New Password:</label>
+                <input type="text" name="new-pass" id="new-pass">
             </div>
-            <button class="passwordSubmit">Submit</button>
+            <button class="password-submit">Submit</button>
         </div>
     </div>
 </div>
