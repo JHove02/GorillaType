@@ -60,34 +60,6 @@ export class ProfileComponent implements OnInit {
 
 
   }
-//--------------------------------------------------------
-//user authentication testing please disregard
-
-  getUsernames(s: string[]) {
-    this.userServ.getUsers().subscribe(data => {
-      this.users = data;
-      for (let i = 0; i < data.length; i++) {
-        let temp: string = "";
-
-        for (let j = 0; j < Object.values(data[i].username).length; j++){
-          temp += Object.values(data[i].username)[j];
-        }
-        s.push(temp)
-      }
-      //console.log(s);
-    })
-  }
-s: string[] = [];
-
-test(){ 
-  this.getUsernames(this.s);
-  console.log(this.s);
-  console.log(this.s.length);
-}
-
-//--------------------------------------------------------
-
-
 addNewUser() {
  
   const newUser: User = {
