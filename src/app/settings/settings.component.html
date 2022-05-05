@@ -15,15 +15,14 @@
 
         <div class="password-container" *ngIf='loggedIn'>
             <h2 class="password-header">Change Password</h2>
-            <div class="current-container">
+            <div class="inputs">
                 <label for="current-pass">Current Password:</label>
                 <input type="text" name="current-pass" id="current-pass">
-            </div>
-            <div class="new-container">
+                <br>
                 <label for="new-pass">New Password:</label>
-                <input type="text" name="new-pass" id="new-pass">
+                <input type="password" name="new-pass" id="new-pass" #newPass>
             </div>
-            <button class="password-submit">Submit</button>
+            <button class="password-submit" (click)="submit(newPass.value)">Submit</button>
         </div>
     </div>
 </div>

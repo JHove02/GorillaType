@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-settings',
@@ -7,12 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
+
+  loggedIn?: boolean;
 
   ngOnInit(): void {
-    
+    //temporary
+    this.loggedIn = true;
+    //TO BE IMPLEMENTED UPON COMPLETION OF USER SERVICE
+    // if(this.userService.getUserId()){
+    //   this.loggedIn = true;
+    // }
+    // else{
+    //   this.loggedIn = false;
+    //   console.log(this.userService.getUserId()) 
+    // }
   }
-  loggedIn?: boolean;
+
+  submit(newPass: string) : void {
+    console.log(newPass);
+    document.querySelector('.password-submit')?.classList.toggle('selected');
+    setTimeout(() => {
+      document.querySelector('.password-submit')?.classList.toggle('selected');
+    }, 2000)
+  }
   
   defaultClick():void{
     document.documentElement.style.setProperty('--nav-button', '#BBB');
