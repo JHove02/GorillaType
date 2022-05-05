@@ -4,7 +4,7 @@
 
 .test-content{
     margin-top: .25rem;
-    color: var(--button);
+    color: var(--text-color);
     padding: 0 .5rem;
     display: flex;
     flex-wrap: wrap;
@@ -43,7 +43,7 @@
 }
 
 .test-header button:hover {
-    color: white;
+    color: var(--black-or-white);
 }
 
 .test-header .test-header-title {

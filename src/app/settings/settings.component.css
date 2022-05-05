@@ -34,6 +34,7 @@ button {
   border: 2px solid var(--header-background);
   border-radius: .5em;
   color: var(--button);
+  transition: 150ms ease-in-out;
 }
 
 p{
@@ -58,7 +59,44 @@ input{
   font-weight: 600;
 }
 
-button:hover{
-  box-shadow: 0 .5em 5px 2px var(--header-background);
-  transform: translateY(-3px);
+.default:hover {
+  color: rgb(62, 227, 172);
+  background-color: #656565;
+  border-color: #444;
+  box-shadow: 0 0 5px 3px rgb(62, 227, 172);
+}
+
+.redBlackBtn:hover {
+  color: #D8315B;
+  background-color: #1E1B18;
+  border-color: #2A2A2E;
+  box-shadow: 0 0 5px 3px #D8315B;
+}
+
+.monkey:hover {
+  color: #F8EE33;
+  background-color: #444;
+  border-color: #333;
+  box-shadow: 0 0 5px 3px #F8EE33;
+}
+
+.miami:hover {
+  color: #f890e7;
+  background-color: #ffffff;
+  border-color: #777;
+  box-shadow: 0 0 5px 3px #0bd3d3;
+}
+
+.blue:hover {
+  color: #144B86;
+  background-color: #78A2CC;
+  border-color: #AECBD6;
+  box-shadow: 0 0 5px 3px #144B86;
+}
+
+.light:hover {
+  color: rgb(62, 227, 172);
+  background-color: #ffffff;
+  border-color: #bbb;
+  box-shadow: 0 0 5px 3px rgb(62, 227, 172);
 }

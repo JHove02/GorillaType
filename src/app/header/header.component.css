@@ -50,7 +50,7 @@
 }
 
 .nav button > svg {
-    fill: var(--button);
+    fill: var(--nav-button);
     width: 25px;
     height: 25px;
     transition: 150ms ease-in-out;
