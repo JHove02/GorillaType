@@ -37,6 +37,7 @@ export class TestResultsComponent implements OnInit {
     }
     document.querySelectorAll('.word').forEach(element => this.testLength++);
     this.accuracy = Math.round(this.accuracy * 100)
+    this.updateUserData();
   }
 
   displayResults(): void {
@@ -47,7 +48,9 @@ export class TestResultsComponent implements OnInit {
       this.accuracy = this.correct / (this.incorrect + this.correct);
       this.time = this.testService.getTime();
       this.finishedPrompt = this.testService.getFinishedPrompt();
+     
       document.querySelector('.label-container')?.appendChild(this.finishedPrompt);
+
     }
     else {
       this.route.navigate(['/test'])
@@ -59,10 +62,20 @@ export class TestResultsComponent implements OnInit {
   }
 
   updateUserData(): void{
-    //let id = this.userServ.getUserId()
-    //if(id != ""){
-      
-    //}
+    console.log('outupdate')
+    if( typeof this.wpm != "undefined"){
+      console.log('inupdate')
+      if(this.testLength <25  ){
+        this.userServ.updateUserTenWPM(this.wpm);
+      }
+      if(this.testLength >24 && this.testLength < 50){
+        this.userServ.updateUserTwentyFiveWPM(this.wpm);
+      }
+      if(this.testLength > 49){
+        this.userServ.updateUserFiftyWPM(this.wpm);
+      }
+    }
+    
   }
 
   

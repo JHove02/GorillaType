@@ -13,17 +13,22 @@ export class UserService {
   private userId: string ="";
 
   setUserId(id: string){
+    console.log('setUserId');
     this.userId = id;
   }
   getUserId(){
+    console.log('getUserID');
+    console.log('THis is the current userId: ' +this.userId);
     return this.userId;
   }
   addUser(newUser: User){
-    console.log("creating new user")
+    console.log('addUser');
+    
     return this.http.post('https://gorillatype-47b71-default-rtdb.firebaseio.com/'+ 'user.json', newUser);
 
   }
   getUsers(){
+    console.log('getUsers');
     return this.http.get<User[]>('https://gorillatype-47b71-default-rtdb.firebaseio.com/' + 'user.json')
     .pipe(map(responseData => {
       const userArray: User[] = [];
@@ -53,12 +58,13 @@ export class UserService {
   }
   */
   deleteUser(username: string){
+    console.log('deleteUser');
     return this.http.delete(`https://gorillatype-47b71-default-rtdb.firebaseio.com/user/-N0gHHUwElbRvZWsNNkB.json`).subscribe();
   }
   
   logIn(username: string, password: string){
      //this.id = Object.values(data)[0]
-    
+     console.log('login');
 
     return this.http.get<User[]>('https://gorillatype-47b71-default-rtdb.firebaseio.com/' + 'user.json')
     .pipe(map(responseData => {
@@ -85,7 +91,7 @@ export class UserService {
   }
   verifyUseroname(newUser: User){
     //this.id = Object.values(data)[0]
-      
+    console.log('verifyuser');
      
     return this.http.get<User[]>('https://gorillatype-47b71-default-rtdb.firebaseio.com/' + 'user.json')
     .pipe(map(responseData => {
@@ -121,10 +127,61 @@ export class UserService {
      }
     
    getCurrentUser(){
+    console.log('getcurrentuser');
     console.log('THis is the current userId: ' +this.userId);
     return this.http.get<User>(`https://gorillatype-47b71-default-rtdb.firebaseio.com/user/${this.userId}.json`).pipe(map(responseData => {
       return responseData;
     }));
+  }
+
+  updateUserTenWPM(newWPM: number){
+    console.log('update10');
+    this.getCurrentUser().subscribe(data => {
+      let newavg = ((data.TenWPM*data.numtentests)+ newWPM)/(data.numtentests+1);
+      
+      console.log('New average' +newavg)
+      
+      this.http.patch(`https://gorillatype-47b71-default-rtdb.firebaseio.com/user/${this.userId}.json`, {"TenWPM" : newavg}).subscribe(data =>{
+      
+      });
+      this.http.patch(`https://gorillatype-47b71-default-rtdb.firebaseio.com/user/${this.userId}.json`, {"numtentests" : data.numtentests +1}).subscribe(data =>{
+
+      });
+    });
+    
+  }
+
+  updateUserTwentyFiveWPM(newWPM: number){
+    console.log('update25');
+    this.getCurrentUser().subscribe(data => {
+      let newavg = ((data.TwentyFiveWPM*data.numtwentyfivetests)+ newWPM)/(data.numtwentyfivetests+1);
+      
+      
+      
+      this.http.patch(`https://gorillatype-47b71-default-rtdb.firebaseio.com/user/${this.userId}.json`, {"TwentyFiveWPM" : newavg}).subscribe(data =>{
+      
+      });
+      this.http.patch(`https://gorillatype-47b71-default-rtdb.firebaseio.com/user/${this.userId}.json`, {"numtwentyfivetests" : data.numtentests +1}).subscribe(data =>{
+
+      });
+    });
+    
+  }
+  updateUserFiftyWPM(newWPM: number){
+    console.log('update50');
+    this.getCurrentUser().subscribe(data => {
+      let newavg = ((data.FiftyWPM*data.numfiftytests)+ newWPM)/(data.numfiftytests+1);
+      
+      
+      
+      this.http.patch(`https://gorillatype-47b71-default-rtdb.firebaseio.com/user/${this.userId}.json`, {"FiftyWPM" : newavg}).subscribe(data =>{
+      
+      });
+      this.http.patch(`https://gorillatype-47b71-default-rtdb.firebaseio.com/user/${this.userId}.json`, {"numfiftytests" : data.numfiftytests +1}).subscribe(data =>{
+
+      });
+    });
+    
   }
   /*
   getCurrentUser(){

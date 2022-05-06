@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { FormsModule } from '@angular/forms';
@@ -21,20 +21,22 @@ export class ProfileComponent implements OnInit {
   public logPassword: string = "";
   public signedIn: boolean = false;
   public incorrectLogin: boolean = false;
-  public currentUser: User = { username: '', password: '', TenWPM: -1, TwentyFiveWPM: -1, FiftyWPM: -1, numtests: -1 };
+  public currentUser: User = { username: '', password: '', TenWPM: -1, TwentyFiveWPM: -1, FiftyWPM: -1, numtentests: -1, numtwentyfivetests: -1, numfiftytests: -1 };
   constructor(private userServ: UserService) { }
   fetchData() {
-    this.userServ.getUsers().subscribe(data => {
-      this.users = data;
+    this.userServ.getCurrentUser().subscribe(data => {
+      this.currentUser = data;
       console.log(data);
     })
   }
   ngOnInit(): void {
+    console.log('ngOninit')
+    this.fetchData();
+
     this.isSignedIn()
     this.incorrectLogin = false;
     this.createdUser = false;
-    this.fetchData();
-
+    
     this.id = this.userServ.getUserId();
 
 
@@ -69,7 +71,9 @@ addNewUser() {
     TenWPM: 0,
     TwentyFiveWPM: 0,
     FiftyWPM: 0,
-    numtests: 0
+    numtentests: 0,
+    numtwentyfivetests: 0,
+    numfiftytests: 0
   }
   this.userServ.verifyUseroname(newUser).subscribe(data => {
     //THIS IS IMPORTANT VERY I MPORTANT
@@ -100,6 +104,7 @@ addNewUser() {
   }
   isSignedIn() {
     let id: string = this.userServ.getUserId()
+    console.log('THis is the current userId in isSignedIn: ' + id);
     if (id == "") {
       this.signedIn = false;
       console.log('not signed in')

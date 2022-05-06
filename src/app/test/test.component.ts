@@ -15,8 +15,8 @@ export class TestComponent implements OnInit {
 
   constructor(
     private testService: TestService,
-    private route: Router
-    
+    private route: Router,
+    private userServ: UserService
   ) { }
 
   promptLength!: number;
@@ -34,6 +34,7 @@ export class TestComponent implements OnInit {
   backspace: boolean = false;
 
   ngOnInit(): void {
+    this.test();
     this.takingTest = false;
     this.promptLength = 10;
     const buttons = document.querySelectorAll('.toggle-length-button');
@@ -249,5 +250,8 @@ export class TestComponent implements OnInit {
     document.querySelector('.taking')?.classList.remove('hover');
   }
 
+  test(): void{
+    this.userServ.getUserId()
+  }
 
 }
