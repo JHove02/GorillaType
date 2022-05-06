@@ -36,13 +36,17 @@ export class ProfileComponent implements OnInit {
     this.isSignedIn()
     this.incorrectLogin = false;
     this.createdUser = false;
-    
+
     this.id = this.userServ.getUserId();
 
 
   }
   login() {
     let id: string = "";
+    document.querySelector('.login-button')?.classList.toggle('selected');
+    setTimeout(() => {
+      document.querySelector('.login-button')?.classList.toggle('selected');
+    }, 2000);
     this.userServ.logIn(this.logUsername, this.logPassword).subscribe(data => {
       id = data;
       console.log('hello ' + data)
@@ -63,36 +67,39 @@ export class ProfileComponent implements OnInit {
 
 
   }
-addNewUser() {
- 
-  const newUser: User = {
-    username: this.newUsername,
-    password: this.newPassword,
-    TenWPM: 0,
-    TwentyFiveWPM: 0,
-    FiftyWPM: 0,
-    numtentests: 0,
-    numtwentyfivetests: 0,
-    numfiftytests: 0
+  addNewUser() {
+    document.querySelector('.signin-button')?.classList.toggle('selected');
+    setTimeout(() => {
+      document.querySelector('.signin-button')?.classList.toggle('selected');
+    }, 2000);
+    const newUser: User = {
+      username: this.newUsername,
+      password: this.newPassword,
+      TenWPM: 0,
+      TwentyFiveWPM: 0,
+      FiftyWPM: 0,
+      numtentests: 0,
+      numtwentyfivetests: 0,
+      numfiftytests: 0
+    }
+    this.userServ.verifyUseroname(newUser).subscribe(data => {
+      //THIS IS IMPORTANT VERY I MPORTANT
+      let tempid = Object.values(data)[0];
+      console.log(tempid);
+      this.fetchData();
+    })
+    /*
+      this.userServ.addUser(newUser).subscribe(data => {
+        //THIS IS IMPORTANT VERY I MPORTANT
+        let tempid = Object.values(data)[0];
+        console.log(tempid);
+        this.fetchData();
+      })
+      */
+    this.createdUser = true;
+    this.LogIn = true;
+    this.CreateUser = false;
   }
-  this.userServ.verifyUseroname(newUser).subscribe(data => {
-    //THIS IS IMPORTANT VERY I MPORTANT
-    let tempid = Object.values(data)[0];
-    console.log(tempid);
-    this.fetchData();
-  })
-/*
-  this.userServ.addUser(newUser).subscribe(data => {
-    //THIS IS IMPORTANT VERY I MPORTANT
-    let tempid = Object.values(data)[0];
-    console.log(tempid);
-    this.fetchData();
-  })
-  */
-  this.createdUser = true;
-  this.LogIn = true;
-  this.CreateUser = false;
- }
 
   setLogin() {
     this.LogIn = true;

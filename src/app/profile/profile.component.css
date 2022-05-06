@@ -28,15 +28,13 @@
 
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 1rem;
     width: 100%;
     height: 100%;
     flex-wrap: wrap;
-}
-
-.signin {
-    align-items: center;
-    justify-content: center;
 }
 
 .buttonsWrapper {
@@ -64,39 +62,54 @@ button:hover {
     transform: translateY(-3px);
 }
 
-.login button {
+.buttonsWrapper button:active {
+    background-color: #AAA;
+    transition: 50ms ease-in-out;
+}
+
+.login button,
+.signin button {
+    align-self: center;
     border: none;
     background-color: var(--button);
     border-radius: .25em;
     transition: 125ms ease-in-out;
     color: var(--background-color);
     font-size: 15px;
-    height: 1.5rem;
-    width: 4rem;
-    margin-left: 10%;
+    height: 2rem;
+    width: 5rem;
     font-weight: 600;
 }
 
-.signin button {
-    border: none;
-    background-color: var(--button);
-    border-radius: .25em;
-    transition: 125ms ease-in-out;
-    color: var(--background-color);
-    font-size: 15px;
-    height: 1.5rem;
-    width: 4rem;
-    margin: 4% 0 10% 10%;
-    font-weight: 600;
+.signin button.selected,
+.login button.selected {
+    animation: submit-pass 1000ms forwards;
 }
+
+@keyframes submit-pass {
+    50% {
+      background-color: var(--accent-color);
+      color: var(--background-color);
+    }
+  
+    100% {
+      background-color: var(--button);
+      color: var(--background-color);
+    }
+  }
 
 .login,
 .signin {
     width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
 
 h2 {
     text-align: center;
+    margin-bottom: 0;
 }
 
 input {

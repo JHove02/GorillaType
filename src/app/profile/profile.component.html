@@ -13,15 +13,7 @@
         <p>Password</p>
         <input type="text" [(ngModel)]="newPassword">
         <br>
-        <button (click)="addNewUser()">Create</button>
-
-    </div>
-
-    <div *ngIf="createdUser">
-        You created an account! Now its time to log in!
-    </div>
-    <div *ngIf="duplicateUser">
-        Username already exists, please try again.    
+        <button class="signin-button" (click)="addNewUser()">Create</button>
     </div>
 
     <div class="login" *ngIf="LogIn">
@@ -35,10 +27,16 @@
         <div *ngIf="incorrectLogin">
             <p style="color:lightcoral">The username and password entered are incorrect</p>
         </div>
-        <br>
-        <button (click)="login()">Log In</button>
-
+        <button class="login-button"(click)="login()">Log In</button>
     </div>
+
+    <div *ngIf="createdUser">
+        You created an account! Now its time to log in!
+    </div>
+    <div *ngIf="duplicateUser">
+        Username already exists, please try again.    
+    </div>
+
 </div>
 
 <div class="loggedWrapper">

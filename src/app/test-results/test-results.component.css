@@ -68,7 +68,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2em auto 0 auto;
+  margin: 2em auto 10em auto;
   border: none;
   background-color: var(--button);
   border-radius: .25em;
@@ -94,4 +94,5 @@
 .label-container {
   margin: 0 auto;
   width: fit-content;
+  font-size: 1rem;
 }
