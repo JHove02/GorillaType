@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RouteConfigLoadStart, Router } from '@angular/router';
 import { TestService } from '../test.service';
 
+import { UserService } from '../user.service';
+
 @Component({
   selector: 'app-test-results',
   templateUrl: './test-results.component.html',
@@ -20,6 +22,7 @@ export class TestResultsComponent implements OnInit {
   constructor(
     private testService: TestService,
     private route: Router,
+    private userServ: UserService
     ) { }
 
   ngOnInit(): void {
@@ -54,5 +57,13 @@ export class TestResultsComponent implements OnInit {
   nextTest(): void {
     this.route.navigate(['/test']);
   }
+
+  updateUserData(): void{
+    //let id = this.userServ.getUserId()
+    //if(id != ""){
+      
+    //}
+  }
+
   
 }

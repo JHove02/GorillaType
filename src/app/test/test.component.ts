@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { interval } from 'rxjs';
 import { TestService } from '../test.service';
+import { UserService } from '../user.service';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class TestComponent implements OnInit {
 
   constructor(
     private testService: TestService,
-    private route: Router,
+    private route: Router
+    
   ) { }
 
   promptLength!: number;
