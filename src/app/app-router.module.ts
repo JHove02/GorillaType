@@ -5,6 +5,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { TestResultsComponent } from './test-results/test-results.component';
 import { TestComponent } from './test/test.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/test', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent },
   { path: 'results', component: TestResultsComponent },
   { path: 'profile', component: ProfileComponent},
+  { path: 'leaderboard', component: LeaderboardComponent},
   { path: '**', component: TestComponent }
   
 ];

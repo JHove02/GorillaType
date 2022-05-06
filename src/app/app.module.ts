@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { User } from './user';
 
 import { ProfileComponent } from './profile/profile.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ProfileComponent } from './profile/profile.component';
     TestResultsComponent,
     SettingsComponent,
     AboutComponent,
-    ProfileComponent
+    ProfileComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,
