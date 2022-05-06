@@ -54,4 +54,5 @@ export class TestResultsComponent implements OnInit {
   nextTest(): void {
     this.route.navigate(['/test']);
   }
+  
 }
