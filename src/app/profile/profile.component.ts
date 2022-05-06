@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   public logPassword: string = "";
   public signedIn: boolean = false;
   public incorrectLogin: boolean = false;
-  public currentUser: User = { username: '', password: '', TenWPM: -1, TwentyFiveWPM: -1, FiftyWPM: -1 };
+  public currentUser: User = { username: '', password: '', TenWPM: -1, TwentyFiveWPM: -1, FiftyWPM: -1, numtests: -1 };
   constructor(private userServ: UserService) { }
   fetchData() {
     this.userServ.getUsers().subscribe(data => {
@@ -68,7 +68,8 @@ addNewUser() {
     password: this.newPassword,
     TenWPM: 0,
     TwentyFiveWPM: 0,
-    FiftyWPM: 0
+    FiftyWPM: 0,
+    numtests: 0
   }
   this.userServ.verifyUseroname(newUser).subscribe(data => {
     //THIS IS IMPORTANT VERY I MPORTANT

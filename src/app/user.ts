@@ -6,5 +6,6 @@ export type User ={
     TenWPM: number;
     TwentyFiveWPM: number;
     FiftyWPM: number;
+    numtests: number;
     
 }
