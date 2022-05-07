@@ -9,7 +9,7 @@
 
 .title {
     font-size: 30pt;
-    padding: 0 0 .25rem 1rem;
+    padding: 0 0 .25rem 3rem;
     z-index: 1;
     position: relative;
     cursor: pointer;
@@ -30,7 +30,8 @@
     animation: slide 250ms ease-in-out forwards;
 }
 
-.nav button {
+.nav button,
+.sign-out-button {
     padding: 0;
     background-color: transparent;
     border: none;
@@ -41,15 +42,18 @@
     cursor: pointer;
 }
 
-.nav button:hover {
+.nav button:hover,
+.sign-out-button:hover {
     background-color: #AAA;
 }
 
-.nav button:hover > svg {
+.nav button:hover > svg,
+.sign-out-button:hover > svg {
     fill: var(--header-background);
 }
 
-.nav button > svg {
+.nav button > svg,
+.sign-out-button > svg {
     fill: var(--nav-button);
     width: 25px;
     height: 25px;
@@ -59,6 +63,23 @@
 .nav .leaderboard svg {
     height: 30px;
     width: 30px;
+}
+
+.sign-out-button {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.sign-out {
+    justify-self: flex-end;
+}
+
+.sign-out-button:hover::after {
+    content: "sign out?";
+    color: var(--header-background);
+    font-size: 10pt;
+    /* transform: translateY(-2em); */
 }
 
 @keyframes slide {
