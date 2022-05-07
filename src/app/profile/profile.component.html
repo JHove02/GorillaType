@@ -11,7 +11,7 @@
         <input type="text" [(ngModel)]="newUsername">
 
         <p>Password</p>
-        <input type="text" [(ngModel)]="newPassword">
+        <input type="password" [(ngModel)]="newPassword">
         <br>
         <button class="signin-button" (click)="addNewUser()">Create</button>
     </div>
@@ -22,7 +22,7 @@
         <input type="text" [(ngModel)]="logUsername">
 
         <p>Password</p>
-        <input type="text" [(ngModel)]="logPassword">
+        <input type="password" [(ngModel)]="logPassword">
         <br>
         <div *ngIf="incorrectLogin">
             <p style="color:lightcoral">The username and password entered are incorrect</p>
