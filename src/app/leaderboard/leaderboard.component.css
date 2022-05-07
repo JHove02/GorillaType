@@ -1,0 +1,62 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.test-length {
+  border: none;
+  background-color: var(--button);
+  border-radius: .25em;
+  transition: 125ms ease-in-out;
+  color: var(--background-color);
+  font-size: 15px;
+  height: 1.5rem;
+  width: 4rem;
+  font-weight: 600;
+  transition: 125ms ease-in-out;
+  margin: 3em 1em 1em 1em;
+}
+
+.test-length:hover {
+  box-shadow: 0 .5em 5px 2px var(--header-background);
+  transform: translateY(-3px);
+}
+
+.test-length:active {
+  background-color: #AAA;
+  transition: 50ms ease-in-out;
+}
+
+.test-length.active {
+  background-color: var(--accent-color);
+}
+
+.leaderboard-table {
+  display: block;
+  width: min-content;
+  max-height: 30vh;
+  overflow-y: scroll;
+}
+
+table, th, td {
+  border: 3px solid var(--button);
+  border-collapse: collapse;
+}
+
+table {
+  border: none;
+}
+
+td {
+  padding: 0 1em;
+  color: var(--black-or-white);
+}
+
+.username-col {
+  width: min-content;
+}
+
+.wpm-col {
+  min-width: min-content;
+}

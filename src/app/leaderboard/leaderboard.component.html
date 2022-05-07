@@ -1,39 +1,21 @@
-<h2>Top Scores</h2>
+<div class="wrapper">
 
-<h3>10 WPM</h3>
-<div>
-   
-      
-    1. {{topTen[0].username}}  :   {{topTen[0].TenWPM}} <br>
-    2. {{topTen[1].username}}  :   {{topTen[1].TenWPM}}  <br>
-    3. {{topTen[2].username}}  :   {{topTen[2].TenWPM}}  <br> 
-    4. {{topTen[3].username}}  :   {{topTen[3].TenWPM}}  <br> 
-    5. {{topTen[4].username}}  :   {{topTen[4].TenWPM}}  <br>
-    
-</div>
-
-
-<h3>25 WPM</h3>
-<div >
-    <p>
-    1. {{topTwentyFive[0].username}}  :   {{topTwentyFive[0].TwentyFiveWPM}}  <br> 
-    2. {{topTwentyFive[1].username}}  :   {{topTwentyFive[1].TwentyFiveWPM}}  <br>
-    3. {{topTwentyFive[2].username}}  :   {{topTwentyFive[2].TwentyFiveWPM}} <br>
-    4. {{topTwentyFive[3].username}}  :   {{topTwentyFive[3].TwentyFiveWPM}} <br>
-    5. {{topTwentyFive[4].username}}  :   {{topTwentyFive[4].TwentyFiveWPM}} <br>
-    </p>
-</div>
-    
-
-
-<h3>50 WPM</h3>
-
-<div >
-    <p>
-    1. {{topFifty[0].username}}  :   {{topFifty[0].FiftyWPM}} <br>
-    2. {{topFifty[1].username}}  :   {{topFifty[1].FiftyWPM}} <br>
-    3. {{topFifty[2].username}}  :   {{topFifty[2].FiftyWPM}} <br>
-    4. {{topFifty[3].username}}  :   {{topFifty[3].FiftyWPM}} <br>
-    5. {{topFifty[4].username}}  :   {{topFifty[4].FiftyWPM}} <br>
-    </p>
+    <div class="heading">Leaderboards</div>
+    <div class="test-length-selection">
+        <button class="test-length ten" (click)="lengthChange(10)">10</button>
+        <button class="test-length twenty-five" (click)="lengthChange(25)">25</button>
+        <button class="test-length fifty" (click)="lengthChange(50)">50</button>
     </div>
+    <table class="leaderboard-table">
+        <tr>
+            <th>Rank</th>
+            <th class="username-col">Username</th>
+            <th class="wpm-col">Average WPM</th>
+        </tr>
+        <tr *ngFor="let entry of leaderboards; let i=index">
+            <td>{{i+1}}</td>
+            <td class="username-col">{{entry.username}}</td>
+            <td class="wpm-col">{{entry.wpm}}</td>
+        </tr>
+    </table>
+</div>
