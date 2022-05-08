@@ -166,6 +166,7 @@ export class UserService {
     });
     
   }
+
   updateUserFiftyWPM(newWPM: number){
     console.log('update50');
     this.getCurrentUser().subscribe(data => {

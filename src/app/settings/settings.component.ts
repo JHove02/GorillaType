@@ -58,11 +58,11 @@ export class SettingsComponent implements OnInit {
         let tempUser: User = data;
         tempUser.password = newPassword;
         console.log("username is " + data.username);
-        //this.userServ.deleteUser(data.username);
-        //this.userServ.addUser(tempUser);
-        this.userServ.deleteUser(data.username);
+
+        //delte user is not working
+        this.userServ.deleteUser(data.username).unsubscribe;
+
         this.userServ.addUser(tempUser).subscribe(data => {
-          //THIS IS IMPORTANT VERY I MPORTANT
           let tempid = Object.values(data)[0];
           console.log(tempid);
         })
