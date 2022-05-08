@@ -123,8 +123,11 @@ export class ProfileComponent implements OnInit {
       this.CreateUser = false;
     }
   }
-  deleteCarson() {
-    this.userServ.deleteUser("asdf");
+  signOut(){
+    this.userServ.signOut();
+    this.signedIn = false;
+    this.LogIn = true;
+    this.CreateUser = false;
   }
 
 

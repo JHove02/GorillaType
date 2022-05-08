@@ -182,6 +182,9 @@ export class UserService {
     });
     
   }
+  signOut(){
+    window.location.reload();
+  }
   /*
   getCurrentUser(){
     let currentUser: User ={username:'',password:'', TenWPM : -1, TwentyFiveWPM: -1, FiftyWPM: -1};

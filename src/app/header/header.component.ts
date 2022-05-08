@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   }
 
   signOut(): void {
-    //do something
+    window.location.reload()
   }
 
 }
