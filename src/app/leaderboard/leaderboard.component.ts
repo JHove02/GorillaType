@@ -44,6 +44,9 @@ export class LeaderboardComponent implements OnInit {
         if(b.wpm > a.wpm) return 1;
         return 0;
       });
+      this.topTen.reverse();
+      this.topTwentyFive.reverse();
+      this.topFifty.reverse();
       this.leaderboards = this.topTen;
     });
   }
