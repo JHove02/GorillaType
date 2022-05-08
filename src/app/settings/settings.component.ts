@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { User } from '../user';
+
 
 @Component({
   selector: 'app-settings',
@@ -8,9 +10,13 @@ import { UserService } from '../user.service';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userServ: UserService) { }
 
   loggedIn?: boolean;
+  public newUsername: string = "";
+  public newPassword: string = "";
+  public currentUser: User = { username: '', password: '', TenWPM: -1, TwentyFiveWPM: -1, FiftyWPM: -1, numtentests: -1, numtwentyfivetests: -1, numfiftytests: -1 };
+
 
   ngOnInit(): void {
     //temporary
@@ -32,6 +38,45 @@ export class SettingsComponent implements OnInit {
       document.querySelector('.password-submit')?.classList.toggle('selected');
     }, 2000)
   }
+  /*
+  fetchData() {
+    this.userServ.getCurrentUser().subscribe(data => {
+      this.currentUser = data;
+      console.log("test");
+      console.log(data.password);
+    })
+  }
+  */
+
+  changePassword(currentPassword: string, newPassword: string){
+    this.userServ.getCurrentUser().subscribe(data => {
+      console.log("database password " + data.password);
+      console.log("current password " + currentPassword);
+    
+      if (currentPassword == data.password){
+        console.log("changing password");
+        let tempUser: User = data;
+        tempUser.password = newPassword;
+        console.log("username is " + data.username);
+        //this.userServ.deleteUser(data.username);
+        //this.userServ.addUser(tempUser);
+        this.userServ.deleteUser(data.username);
+        this.userServ.addUser(tempUser).subscribe(data => {
+          //THIS IS IMPORTANT VERY I MPORTANT
+          let tempid = Object.values(data)[0];
+          console.log(tempid);
+        })
+      }
+      else{
+        console.log("invalid password, cannot change.");
+      }
+    
+    
+    })
+    
+    
+  }
+
   
   defaultClick():void{
     document.documentElement.style.setProperty('--nav-button', '#BBB');

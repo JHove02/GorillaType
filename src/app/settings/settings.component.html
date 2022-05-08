@@ -17,12 +17,12 @@
             <h2 class="password-header">Change Password</h2>
             <div class="inputs">
                 <label for="current-pass">Current Password:</label>
-                <input type="text" name="current-pass" id="current-pass">
+                <input type="text" name="current-pass" id="current-pass" #currentPass>
                 <br>
                 <label for="new-pass">New Password:</label>
                 <input type="password" name="new-pass" id="new-pass" #newPass>
             </div>
-            <button class="password-submit" (click)="submit(newPass.value)">Submit</button>
+            <button class="password-submit" (click)="changePassword(currentPass.value, newPass.value)">Submit</button>
         </div>
     </div>
 </div>

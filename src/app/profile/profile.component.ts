@@ -41,7 +41,8 @@ export class ProfileComponent implements OnInit {
 
 
   }
-  login() {
+
+    login() {
     let id: string = "";
     document.querySelector('.login-button')?.classList.toggle('selected');
     setTimeout(() => {
@@ -88,6 +89,7 @@ export class ProfileComponent implements OnInit {
       console.log(tempid);
       this.fetchData();
     })
+  
     /*
       this.userServ.addUser(newUser).subscribe(data => {
         //THIS IS IMPORTANT VERY I MPORTANT
