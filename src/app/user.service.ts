@@ -98,7 +98,7 @@ export class UserService {
       let exists: boolean = false;
       for(const key in responseData){
         console.log(key);
-        if(newUser.username == responseData[key].username){
+        if(newUser.username == responseData[key].username || newUser.username == ""){
           //console.log(key);
          exists = true;
         }
