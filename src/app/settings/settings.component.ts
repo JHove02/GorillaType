@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { User } from '../user';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(private userServ: UserService) { }
+  constructor(private userServ: UserService, private http: HttpClient) { }
 
   loggedIn?: boolean;
   public newUsername: string = "";
@@ -31,7 +32,7 @@ export class SettingsComponent implements OnInit {
     // }
   }
 
-  submit(newPass: string) : void {
+  submit(newPass: string): void {
     console.log(newPass);
     document.querySelector('.password-submit')?.classList.toggle('selected');
     setTimeout(() => {
@@ -48,37 +49,25 @@ export class SettingsComponent implements OnInit {
   }
   */
 
-  changePassword(currentPassword: string, newPassword: string){
+  changePassword(currentPassword: string, newPassword: string) {
     this.userServ.getCurrentUser().subscribe(data => {
       console.log("database password " + data.password);
       console.log("current password " + currentPassword);
-    
-      if (currentPassword == data.password){
+
+      if (currentPassword == data.password) {
         console.log("changing password");
-        let tempUser: User = data;
-        tempUser.password = newPassword;
-        console.log("username is " + data.username);
-
-        //delte user is not working
-        this.userServ.deleteUser(data.username).unsubscribe;
-
-        this.userServ.addUser(tempUser).subscribe(data => {
-          let tempid = Object.values(data)[0];
-          console.log(tempid);
-        })
+        this.userServ.updatePassword(newPassword);
       }
-      else{
+      else {
         console.log("invalid password, cannot change.");
       }
-    
-    
+
     })
-    
-    
+
   }
 
-  
-  defaultClick():void{
+
+  defaultClick(): void {
     document.documentElement.style.setProperty('--nav-button', '#BBB');
     document.documentElement.style.setProperty('--button', '#BBB');
     document.documentElement.style.setProperty('--text-color', '#BBB');
@@ -90,7 +79,7 @@ export class SettingsComponent implements OnInit {
     document.documentElement.style.setProperty('--accent-light', 'rgb(54, 252, 239)');
   }
 
-  redBlackClick():void{
+  redBlackClick(): void {
     document.documentElement.style.setProperty('--nav-button', '#BBB');
     document.documentElement.style.setProperty('--button', '#BBB');
     document.documentElement.style.setProperty('--text-color', '#BBB');
@@ -102,7 +91,7 @@ export class SettingsComponent implements OnInit {
     document.documentElement.style.setProperty('--accent-light', '#FFFAFF');
   }
 
-  monkeyClick():void{
+  monkeyClick(): void {
     document.documentElement.style.setProperty('--nav-button', '#BBB');
     document.documentElement.style.setProperty('--button', '#BBB');
     document.documentElement.style.setProperty('--text-color', '#BBB');
@@ -114,7 +103,7 @@ export class SettingsComponent implements OnInit {
     document.documentElement.style.setProperty('--accent-light', '#FFFFF');
   }
 
-  miamiClick(): void{
+  miamiClick(): void {
     document.documentElement.style.setProperty('--button', '#f890e7');
     document.documentElement.style.setProperty('--nav-button', '#f890e7');
     document.documentElement.style.setProperty('--text-color', '#000000');
@@ -126,7 +115,7 @@ export class SettingsComponent implements OnInit {
     document.documentElement.style.setProperty('--black-or-white', '#000000');
   }
 
-  blueClick():void{
+  blueClick(): void {
     document.documentElement.style.setProperty('--button', '#dcdcdc');
     document.documentElement.style.setProperty('--nav-button', '#78A2CC');
     document.documentElement.style.setProperty('--text-color', '#ffffff');
@@ -138,7 +127,7 @@ export class SettingsComponent implements OnInit {
     document.documentElement.style.setProperty('--accent-light', '#000000');
   }
 
-  lightClick():void{
+  lightClick(): void {
     document.documentElement.style.setProperty('--button', '#000000');
     document.documentElement.style.setProperty('--nav-button', '#eee');
     document.documentElement.style.setProperty('--incorrect-color', 'rgb(180, 85, 85)');

@@ -23,7 +23,7 @@ export class UserService {
   addUser(newUser: User){
     console.log('addUser');
     
-    return this.http.post('https://gorillatype-47b71-default-rtdb.firebaseio.com/'+ 'user.json', newUser);
+    return this.http.post('https://gorillatype-47b71-default-rtdb.firebaseio.com/'+ 'user.json', newUser );
 
   }
   getUsers(){
@@ -186,6 +186,12 @@ export class UserService {
   signOut(){
     window.location.reload();
   }
+
+  updatePassword(newPassword:string){
+    this.getCurrentUser().subscribe(data => {
+    this.http.patch(`https://gorillatype-47b71-default-rtdb.firebaseio.com/user/${this.userId}.json`, {"password" : newPassword}).subscribe(data => {});
+    });
+  } 
   /*
   getCurrentUser(){
     let currentUser: User ={username:'',password:'', TenWPM : -1, TwentyFiveWPM: -1, FiftyWPM: -1};
