@@ -21,7 +21,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
     //temporary
-    this.loggedIn = true;
+    this.isLoggedIn();
     //TO BE IMPLEMENTED UPON COMPLETION OF USER SERVICE
     // if(this.userService.getUserId()){
     //   this.loggedIn = true;
@@ -31,7 +31,13 @@ export class SettingsComponent implements OnInit {
     //   console.log(this.userService.getUserId()) 
     // }
   }
-
+  isLoggedIn(){
+    if(this.userServ.getUserId() != ""){
+      this.loggedIn = true;
+    }else{
+      this.loggedIn =false;
+    }
+  }
   submit(newPass: string): void {
     console.log(newPass);
     document.querySelector('.password-submit')?.classList.toggle('selected');
