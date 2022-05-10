@@ -17,7 +17,7 @@ export class SettingsComponent implements OnInit {
   public newUsername: string = "";
   public newPassword: string = "";
   public currentUser: User = { username: '', password: '', TenWPM: -1, TwentyFiveWPM: -1, FiftyWPM: -1, numtentests: -1, numtwentyfivetests: -1, numfiftytests: -1 };
-
+  invalid: boolean = false;
 
   ngOnInit(): void {
     //temporary
@@ -38,24 +38,12 @@ export class SettingsComponent implements OnInit {
       this.loggedIn =false;
     }
   }
-  submit(newPass: string): void {
-    console.log(newPass);
+
+  changePassword(currentPassword: string, newPassword: string) {
     document.querySelector('.password-submit')?.classList.toggle('selected');
     setTimeout(() => {
       document.querySelector('.password-submit')?.classList.toggle('selected');
     }, 2000)
-  }
-  /*
-  fetchData() {
-    this.userServ.getCurrentUser().subscribe(data => {
-      this.currentUser = data;
-      console.log("test");
-      console.log(data.password);
-    })
-  }
-  */
-
-  changePassword(currentPassword: string, newPassword: string) {
     this.userServ.getCurrentUser().subscribe(data => {
       console.log("database password " + data.password);
       console.log("current password " + currentPassword);
@@ -63,9 +51,11 @@ export class SettingsComponent implements OnInit {
       if (currentPassword == data.password) {
         console.log("changing password");
         this.userServ.updatePassword(newPassword);
+        this.invalid = false;
       }
       else {
         console.log("invalid password, cannot change.");
+        this.invalid = true;
       }
 
     })

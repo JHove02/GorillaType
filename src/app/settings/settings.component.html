@@ -22,6 +22,7 @@
                 <label for="new-pass">New Password:</label>
                 <input type="password" name="new-pass" id="new-pass" #newPass>
             </div>
+            <div *ngIf="invalid" class="invalid-message">Current password was incorrect.</div>
             <button class="password-submit" (click)="changePassword(currentPass.value, newPass.value)">Submit</button>
         </div>
     </div>

@@ -147,3 +147,9 @@ input {
   border-color: #bbb;
   box-shadow: 0 0 5px 3px rgb(62, 227, 172);
 }
+
+.invalid-message {
+  color: var(--incorrect-color);
+  font-size: 1rem;
+  margin-bottom: 1em;
+}
