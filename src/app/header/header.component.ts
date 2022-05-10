@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 
 @Component({
@@ -6,15 +6,22 @@ import { UserService } from '../user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnChanges {
+export class HeaderComponent implements DoCheck {
 
   constructor(private userServ: UserService) { }
 
   loggedIn?: boolean;
 
-  ngOnChanges(): void{
+  ngOnInnit():void{
     this.isLoggedIn();
   }
+
+  ngDoCheck(): void{
+    this.isLoggedIn();
+  }
+
+  
+
   isLoggedIn(){
     if(this.userServ.getUserId() != ""){
       this.loggedIn = true;
